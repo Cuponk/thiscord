@@ -1,16 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
-import './index.css';
-import App from './App';
-import configureStore from './store';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import "./index.css";
+import App from "./App";
+import configureStore from "./store";
+import csrfFetch, { restoreCSRF } from "./store/csrf";
 
 const store = configureStore();
 
-if (process.env.NODE_ENV !== 'production') {
-  window.store = store;
+if (process.env.NODE_ENV !== "production") {
+    window.store = store;
+    window.csrfFetch = csrfFetch;
 }
+
 
 function Root() {
   return (
@@ -22,9 +25,19 @@ function Root() {
   );
 }
 
-ReactDOM.createRoot(document.getElementById('root'))
-  .render(  
+const renderApplication = () => {
+  ReactDOM.render(
     <React.StrictMode>
       <Root />
-    </React.StrictMode>
+    </React.StrictMode>,
+    document.getElementById('root')
   );
+}
+
+if (sessionStorage.getItem("X-CSRF-Token") === null) {
+  restoreCSRF().then(renderApplication);
+} else {
+  renderApplication();
+}
+
+
