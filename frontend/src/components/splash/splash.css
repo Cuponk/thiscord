@@ -1,0 +1,60 @@
+.splash {
+    height: 51vh;
+    width: 100vw;
+    background-color: #404eed;
+}
+
+.navbar {
+    background-color: #404eed;
+    height: 7vh;
+    display: flex;
+    justify-content: center;
+    gap: 7vw;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.logo-img {
+    width: 30px;
+    height: 23px;
+}
+
+.link-text {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.links {
+    display: flex;
+    justify-content: space-evenly;
+    width: 15%;
+}
+
+.logo-text {
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    
+    text-decoration: none;
+}
+
+.splash-login-button {
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    width: 100px;
+    height: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+}
