@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    width: 80vw;
+}
+
+h1 {
+    font-size: 2rem;
+    font-family: 'Gg sans', Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+p {
+    font-size: 1rem;
+    font-family: 'Gg sans', Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+.text {
+    height: 5vh;
+    width: 20vw;
+}
+
+.gif {
+    width: 328px;
+    height: 350px;
+}
