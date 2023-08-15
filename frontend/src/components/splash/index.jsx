@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import './splash.css';
 import '../../assets/reset.css'
 import logo from '../../assets/logo.png'
+import splashLeft from '../../assets/splash-left.png'
+import splashRight from '../../assets/splash-right.png'
+import splashBackground from '../../assets/splash-background.png'
 const Splash = () => {
 
     return (
@@ -18,6 +21,16 @@ const Splash = () => {
                         <button className="splash-login-button">Login</button>
                     </Link>
                 </div>
+            </div>
+            <img src={splashBackground} alt="" className="splash-background" />
+            <div className="splash-body">
+                <img src={splashLeft} alt="" className="splash-left" />
+                <div className="splash-main">
+                    <h1 className="splash-body-bold">IMAGINE A PLACE...</h1>
+                    <h1 className="splash-body-text">...where you can belong to a school club, a gaming group, or a worldwide art community. Where just you and a handful of friends can spend time together. A place that makes it easy to talk every day and hang out more often.</h1>
+                    <button className='demo-button'>Demo Login</button>
+                </div>
+                <img src={splashRight} alt="" className="splash-right" />
             </div>
         </div>
     )
