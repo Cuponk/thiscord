@@ -8,12 +8,17 @@ import splashRight from '../../assets/splash-right.png'
 import splashBackground from '../../assets/splash-background.png'
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Splash = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
 
-
-
+    const demoLogin = (e) => {
+        e.preventDefault();      
+        dispatch(sessionActions.login({ credential: 'derf6', password: 'password' }))
+        history.push('/channels')
+    }
     return (
         <div className="splash">
             <div className="navbar">
@@ -34,7 +39,7 @@ const Splash = () => {
                 <div className="splash-main">
                     <h1 className="splash-body-bold">IMAGINE A PLACE...</h1>
                     <h1 className="splash-body-text">...where you can belong to a school club, a gaming group, or a worldwide art community. Where just you and a handful of friends can spend time together. A place that makes it easy to talk every day and hang out more often.</h1>
-                    <button className='demo-button'>Demo Login</button>
+                    <button onClick={demoLogin} className='demo-button'>Demo Login</button>
                 </div>
                 <img src={splashRight} alt="" className="splash-right" />
             </div>

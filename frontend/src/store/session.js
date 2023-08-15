@@ -22,8 +22,7 @@ const storeCurrentUser = (user) => {
     else sessionStorage.removeItem("currentUser");
 };
 
-export const login =
-    ({ credential, password }) =>
+export const login = ({ credential, password }) =>
     async (dispatch) => {
         const response = await csrfFetch("/api/session", {
             method: "POST",
