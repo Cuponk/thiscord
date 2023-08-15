@@ -1,32 +1,47 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './splash.css';
+import '../../assets/reset.css'
+import logo from '../../assets/logo.png'
+import splashLeft from '../../assets/splash-left.png'
+import splashRight from '../../assets/splash-right.png'
+import splashBackground from '../../assets/splash-background.png'
 import { useDispatch } from 'react-redux';
-import { logout } from '../../store/session';
-
+import * as sessionActions from '../../store/session';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Splash = () => {
-    
     const dispatch = useDispatch();
+    const history = useHistory();
 
-    const handleLogout = (e) => {
-        e.preventDefault();
-        dispatch(logout());
-    };
-
+    const demoLogin = (e) => {
+        e.preventDefault();      
+        dispatch(sessionActions.login({ credential: 'derf6', password: 'password' }))
+        history.push('/channels')
+    }
     return (
         <div className="splash">
-            <h1>WELCOME TO THISCORD</h1>
-
-            <div className="splash-buttons">
-                <Link to='/login'>
-                    <button className="splash-login-button">Login</button>
-                </Link>
-
-                <Link to='/signup'>
-                    <button className="splash-signup-button">Sign Up</button>
-                </Link>
-
-                <button onClick={handleLogout}>Log Out</button>
+            <div className="navbar">
+                <Link className='logo-text' to='/'> <img className='logo-img' src={logo} alt="" /> Thiscord</Link>
+                <div className="links">
+                    <a className='link-text' href="https://www.linkedin.com/in/justin-aitken-bb9272212/">Linkedin</a>
+                    <a className='link-text' href="https://github.com/Cuponk">Github</a>
+                </div>
+                <div className="splash-buttons">
+                    <Link to='/login'>
+                        <button className="splash-login-button">Login</button>
+                    </Link>
+                </div>
+            </div>
+            <img src={splashBackground} alt="" className="splash-background" />
+            <div className="splash-body">
+                <img src={splashLeft} alt="" className="splash-left" />
+                <div className="splash-main">
+                    <h1 className="splash-body-bold">IMAGINE A PLACE...</h1>
+                    <h1 className="splash-body-text">...where you can belong to a school club, a gaming group, or a worldwide art community. Where just you and a handful of friends can spend time together. A place that makes it easy to talk every day and hang out more often.</h1>
+                    <button onClick={demoLogin} className='demo-button'>Demo Login</button>
+                </div>
+                <img src={splashRight} alt="" className="splash-right" />
             </div>
         </div>
     )
