@@ -6,12 +6,18 @@ import logo from '../../assets/logo.png'
 import splashLeft from '../../assets/splash-left.png'
 import splashRight from '../../assets/splash-right.png'
 import splashBackground from '../../assets/splash-background.png'
+import { useDispatch } from 'react-redux';
+import * as sessionActions from '../../store/session';
+
 const Splash = () => {
+    const dispatch = useDispatch();
+
+
 
     return (
         <div className="splash">
             <div className="navbar">
-                <Link className='logo-text'cto='/'> <img className='logo-img' src={logo} alt="" /> Thiscord</Link>
+                <Link className='logo-text' to='/'> <img className='logo-img' src={logo} alt="" /> Thiscord</Link>
                 <div className="links">
                     <a className='link-text' href="https://www.linkedin.com/in/justin-aitken-bb9272212/">Linkedin</a>
                     <a className='link-text' href="https://github.com/Cuponk">Github</a>
