@@ -1,4 +1,4 @@
-class ServerController < ApplicationController
+class Api::ServersController < ApplicationController
 
     def index
         @servers = Server.all
