@@ -1,24 +1,36 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import * as sessionActions from '../../store/session';
-import { useHistory } from 'react-router-dom';
+import './Channel.css';
+
 
 const Channel = () => {
-    const dispatch = useDispatch();
-    const history = useHistory();
-
-    const handleLogout = (e) => {
-        e.preventDefault();
-        dispatch(sessionActions.logout());
-        history.push('/');
-    }
 
     return (
-        <div>
-            <h1>Channel</h1>
-            <button onClick={handleLogout}>logout</button>
-        </div>
+        <div className='channel-all'>
+            <div className='server-list'>
 
+            </div>
+            <div className='channel-list'>
+                <div className="server-name">
+
+                </div>
+                <div className="channels-actual-list">
+                
+                </div>
+            </div>
+            <div className="channel-window">
+                <div className="channel-name">
+
+                </div>
+                <div className="channel-main">
+                    <div className='chat-window'>
+                    
+                    </div>
+                    <div className='user-list'>
+                    
+                    </div>
+                </div>    
+            </div>
+        </div>
     )
 }
 
