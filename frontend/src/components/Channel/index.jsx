@@ -1,9 +1,11 @@
 import React from 'react';
 import './Channel.css';
 import ServerList from '../ServerList';
+import { useParams } from 'react-router-dom';
 
 
 const Channel = () => {
+    const { serverId } = useParams();
 
     return (
         <div className='channel-all'>

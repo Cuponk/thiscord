@@ -4,15 +4,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import './LoginFormPage.css';
 import background from '../../assets/image.svg';
+import { useHistory } from "react-router-dom";
 
 function LoginFormPage() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const sessionUser = useSelector((state) => state.session.user);
     const [credential, setCredential] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
 
-    if (sessionUser) return <Redirect to="/channels" />;
+    if (sessionUser) return <Redirect to="/channels/@me" />;
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -30,7 +32,8 @@ function LoginFormPage() {
                 else if (data) setErrors([data]);
                 else setErrors([res.statusText]);
             }
-        );
+            );
+            history.push('/channels/@me');
     };
 
     return (
