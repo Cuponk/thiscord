@@ -1,24 +1,31 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import * as sessionActions from '../../store/session';
-import { useHistory } from 'react-router-dom';
+import './Channel.css';
+import ServerList from '../ServerList';
+import { useParams } from 'react-router-dom';
+import ChannelWindow from './ChannelWindow';
+import { useState } from 'react';
+import ServerModal from './ServerModal';
+
 
 const Channel = () => {
-    const dispatch = useDispatch();
-    const history = useHistory();
-
-    const handleLogout = (e) => {
-        e.preventDefault();
-        dispatch(sessionActions.logout());
-        history.push('/');
-    }
+    const [showModal, setShowModal] = useState(false);
+    const { serverId } = useParams();
 
     return (
-        <div>
-            <h1>Channel</h1>
-            <button onClick={handleLogout}>logout</button>
-        </div>
-
+        <>
+            <ServerModal showModal={showModal} setShowModal={setShowModal}/>
+            <div className='channel-all'>
+                <ServerList setShowModal={setShowModal}/>
+                <div className='channel-list'>
+                    <div className="server-name">
+                    </div>
+                    <div className="channels-actual-list">
+            
+                    </div>
+                </div>
+                <ChannelWindow serverId={serverId} />
+            </div>
+        </>
     )
 }
 

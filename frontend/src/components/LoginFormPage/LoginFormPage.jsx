@@ -4,20 +4,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import './LoginFormPage.css';
 import background from '../../assets/image.svg';
+import { useHistory } from "react-router-dom";
 
 function LoginFormPage() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const sessionUser = useSelector((state) => state.session.user);
     const [credential, setCredential] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
 
-    if (sessionUser) return <Redirect to="/channels" />;
+    if (sessionUser) return <Redirect to="/channels/@me" />;
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
-        return dispatch(sessionActions.login({ credential, password })).catch(
+        dispatch(sessionActions.login({ credential, password })).catch(
             async (res) => {
                 let data;
                 try {
@@ -30,7 +32,8 @@ function LoginFormPage() {
                 else if (data) setErrors([data]);
                 else setErrors([res.statusText]);
             }
-        );
+            );
+            history.push('/channels/@me');
     };
 
     return (
@@ -47,7 +50,7 @@ function LoginFormPage() {
                                 <li key={error}>{error}</li>
                             ))}
                         </ul>
-                        <label for='username' className="login-cred-text">EMAIL OR USERNAME</label>
+                        <label htmlFor='username' className="login-cred-text">EMAIL OR USERNAME</label>
                         <input
                             id="username"
                             className="login-cred-input"
@@ -56,7 +59,7 @@ function LoginFormPage() {
                             onChange={(e) => setCredential(e.target.value)}
                             required
                         />
-                        <label for='password' className="login-cred-text">PASSWORD</label>
+                        <label htmlFor='password' className="login-cred-text">PASSWORD</label>
                         <input
                             className="login-cred-input"
                             id="password"

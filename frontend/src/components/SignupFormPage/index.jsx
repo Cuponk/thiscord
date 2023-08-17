@@ -5,6 +5,7 @@ import * as sessionActions from "../../store/session";
 import background from '../../assets/image.svg';
 import './SignupFormPage.css';
 
+
 function SignupFormPage() {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
@@ -14,7 +15,7 @@ function SignupFormPage() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState([]);
 
-    if (sessionUser) return <Redirect to="/channels" />;
+    if (sessionUser) return <Redirect to="/channels/@me" />;
 
     const handleSubmit = (e) => {
         e.preventDefault();
