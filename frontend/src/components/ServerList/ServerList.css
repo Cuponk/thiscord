@@ -1,0 +1,13 @@
+.server-list {
+    height: 100vh;
+    width: 2.8%;
+    background-color: #1e1f22;
+}
+
+.server-item {
+    color: blanchedalmond;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+}

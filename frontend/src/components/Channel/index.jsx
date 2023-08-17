@@ -1,14 +1,13 @@
 import React from 'react';
 import './Channel.css';
+import ServerList from '../ServerList';
 
 
 const Channel = () => {
 
     return (
         <div className='channel-all'>
-            <div className='server-list'>
-
-            </div>
+            <ServerList />
             <div className='channel-list'>
                 <div className="server-name">
 
