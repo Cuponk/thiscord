@@ -5,13 +5,14 @@ const ServerItem = ({ server }) => {
     const history = useHistory();
     
     const handleChange = () => {
+        history.push(`/channels/${server.id}`);
     }
 
     return (
         <li onClick={handleChange}>
-            <div className="server-item">
+            <button className="server-item">
                 {server.id}
-            </div>
+            </button>
         </li>
     )
 }

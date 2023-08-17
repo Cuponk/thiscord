@@ -1,4 +1,4 @@
-import { legacy_createStore, combineReducers, applyMiddleware } from 'redux';
+import { legacy_createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import sessionReducer from './session';
 import serverReducer from './server';
@@ -8,8 +8,19 @@ export const rootReducer = combineReducers({
   servers: serverReducer
 });
 
+let enhancer;
+
+if (process.env.NODE_ENV === 'production') {
+  enhancer = applyMiddleware(thunk);
+} else {
+  const logger = require('redux-logger').default;
+  const composeEnhancers =
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  enhancer = composeEnhancers(applyMiddleware(thunk, logger));
+}
+
 
 const configureStore = (preloadedstate) => {
-    return legacy_createStore(rootReducer, preloadedstate, applyMiddleware(thunk));
+    return legacy_createStore(rootReducer, preloadedstate, enhancer);
 };
 export default configureStore;

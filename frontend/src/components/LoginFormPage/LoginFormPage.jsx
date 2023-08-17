@@ -19,7 +19,7 @@ function LoginFormPage() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
-        return dispatch(sessionActions.login({ credential, password })).catch(
+        dispatch(sessionActions.login({ credential, password })).catch(
             async (res) => {
                 let data;
                 try {
@@ -33,7 +33,7 @@ function LoginFormPage() {
                 else setErrors([res.statusText]);
             }
             );
-            history.push('/channels/@me');
+            history.push('/channels/');
     };
 
     return (

@@ -2,6 +2,7 @@ import React from 'react';
 import './Channel.css';
 import ServerList from '../ServerList';
 import { useParams } from 'react-router-dom';
+import ChannelWindow from './ChannelWindow';
 
 
 const Channel = () => {
@@ -18,19 +19,7 @@ const Channel = () => {
                 
                 </div>
             </div>
-            <div className="channel-window">
-                <div className="channel-name">
-
-                </div>
-                <div className="channel-main">
-                    <div className='chat-window'>
-                    
-                    </div>
-                    <div className='user-list'>
-                    
-                    </div>
-                </div>    
-            </div>
+            <ChannelWindow serverId={serverId} />
         </div>
     )
 }

@@ -11,13 +11,15 @@ import { useSelector } from 'react-redux';
 function App() {
   const currentUserId = useSelector(state => state.session.user?.id);
 
+
   return (
     <Switch>
+        <Route exact path='/' component={Splash} />
         <Route path='/login' component={LoginFormPage}/>
         <Route path='/signup' component={SignupFormPage}/>
-        <Route path='/channels/:serverId'>{ currentUserId ? <Channel/> : <Redirect to='/login'/> }</Route>
+        <Route exact path='/channels/:serverId'>{<Channel/>}</Route>
+        <Route path='/channels/'>{<Channel/>}</Route>
         <Route path='*' component={FourOhOFour}/>
-        <Route exact path='/' component={Splash} />
   </Switch>
   );
 }

@@ -5,6 +5,7 @@ import * as sessionActions from "../../store/session";
 import background from '../../assets/image.svg';
 import './SignupFormPage.css';
 
+
 function SignupFormPage() {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
