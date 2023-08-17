@@ -11,7 +11,7 @@ class Api::ServersController < ApplicationController
     end
 
     def create
-        @server = Server.new(server_params)
+        @server = Server.create(server_params)
         render :show
     end
 

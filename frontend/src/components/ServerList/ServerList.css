@@ -1,11 +1,21 @@
 .server-list {
     height: 100vh;
-    width: 2.8%;
+    width: 5rem;
     background-color: #1e1f22;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    top: 0;
 }
 
 .server-item {
-    color: blanchedalmond;
+    width: 3rem;
+    height: 3rem;
+    background-color: blanchedalmond;
+    border-radius: 50px;
+    border: none;
+    color: black;
     font-size: 1.5rem;
     font-weight: 500;
     margin-left: 0.5rem;

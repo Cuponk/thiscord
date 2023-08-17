@@ -54,7 +54,7 @@ export const updateServer = (server) => async (dispatch) => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(server)
+        body: server
     });
     const data = await res.json();
     dispatch(addServer(data.server));

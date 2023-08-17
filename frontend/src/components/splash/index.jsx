@@ -17,7 +17,7 @@ const Splash = () => {
     const demoLogin = (e) => {
         e.preventDefault();      
         dispatch(sessionActions.login({ credential: 'derf6', password: 'password' }))
-        history.push('/channels')
+        history.push('/channels/@me')
     }
     return (
         <div className="splash">

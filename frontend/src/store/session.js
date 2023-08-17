@@ -33,6 +33,7 @@ export const login = ({ credential, password }) =>
         dispatch(setCurrentUser(data.user));
         return response;
     };
+    
 
 export const restoreSession = () => async (dispatch) => {
     const response = await csrfFetch("/api/session");

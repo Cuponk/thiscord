@@ -33,7 +33,7 @@ function LoginFormPage() {
                 else setErrors([res.statusText]);
             }
             );
-            history.push('/channels/');
+            history.push('/channels/@me');
     };
 
     return (
@@ -50,7 +50,7 @@ function LoginFormPage() {
                                 <li key={error}>{error}</li>
                             ))}
                         </ul>
-                        <label for='username' className="login-cred-text">EMAIL OR USERNAME</label>
+                        <label htmlFor='username' className="login-cred-text">EMAIL OR USERNAME</label>
                         <input
                             id="username"
                             className="login-cred-input"
@@ -59,7 +59,7 @@ function LoginFormPage() {
                             onChange={(e) => setCredential(e.target.value)}
                             required
                         />
-                        <label for='password' className="login-cred-text">PASSWORD</label>
+                        <label htmlFor='password' className="login-cred-text">PASSWORD</label>
                         <input
                             className="login-cred-input"
                             id="password"
