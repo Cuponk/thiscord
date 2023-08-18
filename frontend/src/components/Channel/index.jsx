@@ -5,11 +5,14 @@ import { useParams } from 'react-router-dom';
 import ChannelWindow from './ChannelWindow';
 import { useState } from 'react';
 import ServerModal from './ServerModal';
+import { useEffect } from 'react';
 
 
 const Channel = () => {
     const [showModal, setShowModal] = useState(false);
     const { serverId } = useParams();
+
+
 
     return (
         <>

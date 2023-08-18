@@ -39,9 +39,8 @@ export const createServer = (server) => async (dispatch) => {
     const res = await csrfFetch('/api/servers/', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
         },
-        body: JSON.stringify(server)
+        body: server
     });
     const data = await res.json();
     dispatch(addServer(data.server));

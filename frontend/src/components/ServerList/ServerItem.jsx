@@ -11,7 +11,7 @@ const ServerItem = ({ server }) => {
     return (
         <li onClick={handleChange}>
             <button className="server-item">
-                {server.id}
+                {server.photoUrl ? <img className='server-item-icon' src={server.photoUrl} alt="" /> : <div className='server-id'>{server.id}</div>}
             </button>
         </li>
     )
