@@ -21,6 +21,7 @@ const ServerHome = ({ serverId }) => {
         <div>
             <h1>Server Home</h1>
             <h1>{server.name}</h1>
+            <img src={server.photoUrl} alt="" />
         </div>
     )
 }

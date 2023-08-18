@@ -25,7 +25,7 @@ class Api::ServersController < ApplicationController
     private
 
     def server_params
-        params.require(:server).permit(:name, :owner_id)
+        params.require(:server).permit(:name, :photo, :owner_id)
     end
 
 end

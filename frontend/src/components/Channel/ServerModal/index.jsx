@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 const ServerModal = ({ showModal, setShowModal }) => {
     const dispatch = useDispatch();
     const [serverName, setServerName] = useState('');
+    const [serverPhoto, setServerPhoto] = useState(null);
     const sessionUser = useSelector(state => state.session.user);
 
     useEffect(() => {
@@ -18,10 +19,18 @@ const ServerModal = ({ showModal, setShowModal }) => {
 
     const handleSubmit = async e => {
         e.preventDefault();
-        
-        dispatch(serverActions.createServer({server: {name: serverName, owner_id: sessionUser.id}}))
-
+        const formData = new FormData();
+        formData.append('server[name]', serverName);
+        formData.append('server[owner_id]', sessionUser.id);
+        if (serverPhoto) formData.append('server[photo]', serverPhoto);
+        // console.log(formData);
+        dispatch(serverActions.createServer(formData))
         setShowModal(false);
+    }
+
+    const handlefile = e => {
+        const file = e.target.files[0];
+        if (file) setServerPhoto(file);
     }
 
     return (
@@ -36,6 +45,9 @@ const ServerModal = ({ showModal, setShowModal }) => {
                         </div>
                         <div className='server-modal-body'>
                             <form onSubmit={handleSubmit}>
+                                <label>
+                                    <input type="file" onChange={handlefile} />
+                                </label>
                                 <label>SERVER NAME</label>
                                 <input
                                     type='text'

@@ -9,7 +9,15 @@
     top: 0;
 }
 
+.server-item-button {
+    border-radius: 50px;
+    border: none;
+}
+
 .server-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 3rem;
     height: 3rem;
     background-color: blanchedalmond;
@@ -20,4 +28,11 @@
     font-weight: 500;
     margin-left: 0.5rem;
     margin-top: 0.5rem;
+}
+
+.server-item-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50px;
+    border: none;
 }
