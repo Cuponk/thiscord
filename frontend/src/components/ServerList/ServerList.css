@@ -20,27 +20,64 @@
     align-items: center;
     width: 3rem;
     height: 3rem;
-    background-color: blanchedalmond;
-    border-radius: 50px;
+    background-color: #313338;
+    border-radius: 50%;
     border: none;
     color: black;
     font-size: 1.5rem;
     font-weight: 500;
     margin-left: 0.5rem;
     margin-top: 0.5rem;
+    transition: 0.15s;
+}
+.server-id {
+    font-family: 'gg sans';
+    font-size: 100%;
+    font-weight: 500;
+    color: ghostwhite;
+}
+
+.server-item:hover {
+    background-color: #5865f2;
+    border-radius: 15px;
 }
 
 .server-item-icon {
     width: 3rem;
     height: 3rem;
-    border-radius: 50px;
+    border-radius: 50%;
     border: none;
+    transition: 0.15s;
+}
+
+.server-item-icon:hover {
+    border-radius: 15px;
 }
 
 .add-server {
-    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #313338;
+    border: none;
+    border-radius: 50%;
     width: 3rem;
     height: 3rem;
     margin-left: 0.5rem;
     margin-top: 0.5rem;
+    transition: 0.15s;
+}
+
+.add-server-icon {
+    width: 24px;
+    height: 24px;
+    color: #23a559;
+}
+
+.add-server:hover {
+    border-radius: 15px;
+    background-color: #23a559;
+    > .add-server-icon {
+        color: ghostwhite;
+    }
 }

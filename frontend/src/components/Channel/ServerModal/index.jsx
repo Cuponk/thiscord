@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { ReactComponent as CloseButton } from '../../../assets/close.svg'
-import { ReactComponent as AddButton } from '../../../assets/plus-server'
+import { ReactComponent as UploadImage } from '../../../assets/upload.svg'
 
 const ServerModal = ({ showModal, setShowModal }) => {
     const dispatch = useDispatch();
@@ -42,7 +42,7 @@ const ServerModal = ({ showModal, setShowModal }) => {
     }
 
     return (
-        <>
+        <div className='modal-base'>
             {showModal && (
                 <div className='server-modal' onClick={() => setShowModal(false)}>
                     <div className='server-modal-content' onClick={e => e.stopPropagation()}>
@@ -56,6 +56,7 @@ const ServerModal = ({ showModal, setShowModal }) => {
                         <div className='server-modal-body'>
                             <form className='modal-form' onSubmit={handleSubmit}>
                                 <label className='upload-label'>
+                                    <UploadImage className='upload-image'/>
                                     <input className='upload-icon' type="file" onChange={handlefile} />
                                 </label>
                                 {/* <img className="actual-preview" src={imgData} alt="" /> */}
@@ -77,7 +78,7 @@ const ServerModal = ({ showModal, setShowModal }) => {
                     </div>
                 </div>
                 )}
-        </>           
+        </div>           
     )
 }
 

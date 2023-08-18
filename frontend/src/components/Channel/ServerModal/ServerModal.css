@@ -65,11 +65,6 @@
     color: #4e5058;
 }
 
-.upload-label {
-    width: 80px;
-    height: 80px;
-    background-image: url('../../../assets/svgviewer-png-output.png');
-}
 
 .bottom-submit {
     display: flex;
@@ -93,6 +88,11 @@
     transition: 0.170s;
 }
 
+.upload-image {
+    color: #4e5058;
+    
+}
+
 .submit-button:hover {
     background-color: #4752c5;
 }
@@ -111,6 +111,14 @@
     background-color: #ebebeb;
     color: #313338;
     border-radius: 5px;
+    padding-left: 10px;
+    font-weight: 500;
+    font-size: 16px;
+    font-family: 'gg sans';
+}
+
+.server-name-input:focus {
+    outline: none;
 }
 
 .server-name {
@@ -131,3 +139,5 @@
     font-size: 12px;
     font-weight: 600;
 }
+
+
