@@ -33,6 +33,7 @@
 .close {
     color: #a5a6aa;
     position: relative;
+    cursor: pointer;
     bottom: 1rem;
     left: 4rem;
     transition: 0.2s;
@@ -90,10 +91,11 @@
 
 .upload-image {
     color: #4e5058;
-    
+    cursor: pointer;
 }
 
 .submit-button:hover {
+    cursor: pointer;
     background-color: #4752c5;
 }
 
