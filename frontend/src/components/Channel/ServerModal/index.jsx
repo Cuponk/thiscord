@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import { useEffect } from 'react';
+import {ReactComponent as UploadImage} from '../../../assets/upload.svg';
 
 const ServerModal = ({ showModal, setShowModal }) => {
     const dispatch = useDispatch();
@@ -39,12 +40,15 @@ const ServerModal = ({ showModal, setShowModal }) => {
                 <div className='server-modal' onClick={() => setShowModal(false)}>
                     <div className='server-modal-content' onClick={e => e.stopPropagation()}>
                         <div className='server-modal-header'>
-                            <h2 className='top-half'>Customize Your Server</h2>
-                            <h1 className='close top-half' onClick={() => setShowModal(false)}>X</h1>
-                            <p>Give your new server a personality with a name and an icon, you can always change it later</p>
+                            <div className="top-half">
+                                <h2 className='modal-title'>Customize Your Server</h2>
+                                <h1 className='close' onClick={() => setShowModal(false)}>x</h1>
+                            </div>
+                            <p className='modal-text'>Give your new server a personality with a name and an icon, you can always change it later</p>
                         </div>
                         <div className='server-modal-body'>
-                            <form onSubmit={handleSubmit}>
+                            <form className='modal-form' onSubmit={handleSubmit}>
+                                <UploadImage className='upload-image'/>
                                 <label>
                                     <input type="file" onChange={handlefile} />
                                 </label>
