@@ -14,24 +14,37 @@
 
 .server-modal-content {
     width: 440px;
-    height: 440px;
+    height: 404px;
     background-color: ghostwhite;
-    border-radius: 10px;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .top-half {
+    margin-top: 30px;
     font-family: 'gg Sans';
     display: flex;
     justify-content: center;
 }
 
 .close {
+    color: #a5a6aa;
     position: relative;
-    left: 6rem;
+    bottom: 1rem;
+    left: 4rem;
+    transition: 0.2s;
+}
+
+.close:hover {
+    color: #3d3e42;
+}
+
+.modal-title {
+    font-size: 24px;
+    font-weight: 700;
 }
 
 .modal-form {
@@ -39,4 +52,82 @@
     flex-direction: column;
     align-items: center;
     gap: 5px
+}
+
+.upload-icon {
+    display: none;
+}
+
+.modal-text {
+    margin-top: 20px;
+    width: 392px;
+    text-align: center;
+    color: #4e5058;
+}
+
+.upload-label {
+    width: 80px;
+    height: 80px;
+    background-image: url('../../../assets/svgviewer-png-output.png');
+}
+
+.bottom-submit {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #f2f3f5;
+    border-radius: 0px 0px 5px 5px ;
+    width: 440px;
+    height: 70px;
+}
+
+.submit-button {
+    margin-right: 20px;
+    position: relative;
+    color: blanchedalmond;
+    height: 36px;
+    width: 98px;
+    background-color: #5865f2;
+    border: none;
+    border-radius: 5px;
+    transition: 0.170s;
+}
+
+.submit-button:hover {
+    background-color: #4752c5;
+}
+
+.server-name-base {
+    height: 100px;
+    width: 408px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+}
+
+.server-name-input {
+    height: 40%;
+    border: none;
+    background-color: #ebebeb;
+    color: #313338;
+    border-radius: 5px;
+}
+
+.server-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: #4e5058;
+    font-family: 'gg sans';
+}
+
+.server-name-alert {
+    color: #62646c;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.guidelines {
+    color: #006ce7;
+    font-size: 12px;
+    font-weight: 600;
 }

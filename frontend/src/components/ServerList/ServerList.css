@@ -36,3 +36,11 @@
     border-radius: 50px;
     border: none;
 }
+
+.add-server {
+    border-radius: 50px;
+    width: 3rem;
+    height: 3rem;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+}
