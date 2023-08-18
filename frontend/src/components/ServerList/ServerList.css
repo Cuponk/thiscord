@@ -1,12 +1,14 @@
 .server-list {
-    height: 100vh;
-    width: 5rem;
+    list-style: none;
+    width: 72px;
     background-color: #1e1f22;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     top: 0;
+    gap: 10px;
+    padding-top: 10px;
 }
 
 .server-item-button {
@@ -26,8 +28,8 @@
     color: black;
     font-size: 1.5rem;
     font-weight: 500;
-    margin-left: 0.5rem;
-    margin-top: 0.5rem;
+    /* margin-left: 0.5rem;
+    margin-top: 0.5rem; */
     transition: 0.15s;
 }
 .server-id {
@@ -43,8 +45,8 @@
 }
 
 .server-item-icon {
-    width: 3rem;
-    height: 3rem;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     border: none;
     transition: 0.15s;
@@ -61,10 +63,10 @@
     background-color: #313338;
     border: none;
     border-radius: 50%;
-    width: 3rem;
-    height: 3rem;
-    margin-left: 0.5rem;
-    margin-top: 0.5rem;
+    width: 48px;
+    height: 48px;
+    /* margin-left: 0.5rem;
+    margin-top: 0.5rem; */
     transition: 0.15s;
 }
 

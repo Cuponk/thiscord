@@ -5,27 +5,20 @@ import { useParams } from 'react-router-dom';
 import ChannelWindow from './ChannelWindow';
 import { useState } from 'react';
 import ServerModal from './ServerModal';
-import { useEffect } from 'react';
+import ChannelList from './ChannelList'
+
 
 
 const Channel = () => {
     const [showModal, setShowModal] = useState(false);
     const { serverId } = useParams();
 
-
-
     return (
         <>
             <ServerModal showModal={showModal} setShowModal={setShowModal}/>
             <div className='channel-all'>
                 <ServerList setShowModal={setShowModal}/>
-                <div className='channel-list'>
-                    <div className="server-name">
-                    </div>
-                    <div className="channels-actual-list">
-            
-                    </div>
-                </div>
+                <ChannelList serverId={serverId}/>
                 <ChannelWindow serverId={serverId} />
             </div>
         </>

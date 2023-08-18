@@ -15,12 +15,10 @@ const ServerList = ({ setShowModal }) => {
 
 
     return (
-        <div className='server-list'>
-            <ul>
-                {servers.map(server => (<ServerItem key={server.id} server={server} />))}
-                <button onClick={() => setShowModal(true)} className='add-server'><AddButton className='add-server-icon'/></button>
-            </ul>
-        </div>
+        <ul className='server-list'>
+            {servers.map(server => (<ServerItem key={server.id} server={server} />))}
+            <button onClick={() => setShowModal(true)} className='add-server'><AddButton className='add-server-icon'/></button>
+        </ul>
     )
 }
 

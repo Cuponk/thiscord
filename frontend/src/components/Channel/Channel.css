@@ -8,29 +8,16 @@
     display: flex;
 }
 
-.server-list {
-    height: 100vh;
-    width: 2.8%;
-    background-color: #1e1f22;
-}
-
-.channel-list {
-    height: 100vh;
-    width: 9%;
-    background-color: #2b2d31;
-}
-
 .channel-window {
     height: 100vh;
-    width: 100%;
+    width: 84vw;
     background-color: #313338;
     display: flex;
     flex-direction: column;
 }
 
 .channel-name {
-    height: 4%;
-    width: 99%;
+    height: 5vh;
     background-color: #313338;
     color: white;
     display: flex;
@@ -39,3 +26,13 @@
     box-shadow: 0px 2px 1px 0px #25262a; 
 }
 
+.channel-main {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-list {
+    height: 95vh;
+    background-color: #2b2d31;
+    width: 240px;
+}
