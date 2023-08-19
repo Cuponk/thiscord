@@ -15,10 +15,12 @@ const ChannelList = ({ serverId }) => {
     return (
         <div className='channel-list'>
             <div className="server-top-name">
-            {serverId === '@me' ? 'user home' : server?.name }
+                {serverId === '@me' ? 'user home' : server?.name }
             </div>
             <div className="channels-actual-list">
-
+                <ul>
+                    {/* channels.map */}
+                </ul>
             </div>
         </div>
     )
