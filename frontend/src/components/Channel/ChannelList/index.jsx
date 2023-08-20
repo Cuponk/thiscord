@@ -1,14 +1,23 @@
 import './ChannelList.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchServer } from '../../../store/server';
-import { useEffect } from 'react';
+import { fetchChannels } from '../../../store/channel';
+import { fetchServer } from '../../../store/server'
+import { useEffect, useState } from 'react';
 
 const ChannelList = ({ serverId }) => {
+    const [channelsList, setChannelsList] = useState([])
+    const channels = useSelector(state => Object.values(state.channels))
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (serverId != '@me') dispatch(fetchServer(serverId))
+        if (serverId !== '@me') {
+            dispatch(fetchServer(serverId));
+            dispatch(fetchChannels());
+        }
     }, [dispatch, serverId]);
+
+    console.log(channels)
+    // setChannelsList(channels.filter((val) => val.serverId === serverId))
 
     const server = useSelector(state => state.servers[serverId])
 
@@ -19,7 +28,11 @@ const ChannelList = ({ serverId }) => {
             </div>
             <div className="channels-actual-list">
                 <ul>
-                    {/* channels.map */}
+                    {/* {channelsList.map((el) => (
+                        <li>
+                            {el.name}
+                        </li>
+                    ))} */}
                 </ul>
             </div>
         </div>
