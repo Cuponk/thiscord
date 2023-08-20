@@ -1,7 +1,11 @@
 class Api::ChannelsController < ApplicationController
     
     def index
-        @channels = Channel.all
+        if params[:server_id].present?
+            @channels = Channel.where(server_id: params[:server_id])
+        else
+            @channels = Channel.all
+        end
         render :index
     end
 

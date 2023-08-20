@@ -1,23 +1,22 @@
 import './ChannelList.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchChannels } from '../../../store/channel';
+import { fetchChannels, resetChannels } from '../../../store/channel';
 import { fetchServer } from '../../../store/server'
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import ChannelListItem from './ChannelListItem';
+import { ReactComponent as AddChannel } from '../../../assets/plus-channel.svg'
 
 const ChannelList = ({ serverId }) => {
-    const [channelsList, setChannelsList] = useState([])
     const channels = useSelector(state => Object.values(state.channels))
     const dispatch = useDispatch();
-
+    
     useEffect(() => {
         if (serverId !== '@me') {
+            dispatch(resetChannels());
             dispatch(fetchServer(serverId));
-            dispatch(fetchChannels());
+            dispatch(fetchChannels(serverId));
         }
     }, [dispatch, serverId]);
-
-    console.log(channels)
-    // setChannelsList(channels.filter((val) => val.serverId === serverId))
 
     const server = useSelector(state => state.servers[serverId])
 
@@ -28,11 +27,13 @@ const ChannelList = ({ serverId }) => {
             </div>
             <div className="channels-actual-list">
                 <ul>
-                    {/* {channelsList.map((el) => (
-                        <li>
-                            {el.name}
-                        </li>
-                    ))} */}
+                    <div className="channels-list-header">
+                        <div className="channels-list-header-name">TEXT CHANNELS</div>
+                        <button className="channels-list-header-add-button"><AddChannel className="add-channel-icon"/></button>
+                    </div>
+                    {channels.map((el) => (
+                        <ChannelListItem channel={el} />
+                    ))}
                 </ul>
             </div>
         </div>

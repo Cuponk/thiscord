@@ -3,6 +3,7 @@ import csrfFetch from "./csrf";
 const ADD_CHANNEL = 'ADD_CHANNEL';
 const ADD_CHANNELS = 'ADD_CHANNELS';
 const REMOVE_CHANNEL = 'REMOVE_CHANNEL'
+const RESET_CHANNELS = 'RESET_CHANNELS'
 
 const addChannels = (channels) => ({
     type: ADD_CHANNELS,
@@ -15,13 +16,17 @@ const addChannel = (channel) => ({
 })
 
 const removeChannel = (channel) => ({
-    type: ADD_CHANNEL,
+    type: REMOVE_CHANNEL,
     channel
 })
 
-export const fetchChannels = () => async dispatch => {
-    const res = await csrfFetch('/api/channels/');
-    const data = res.json()
+export const resetChannels = () => ({
+    type: RESET_CHANNELS
+})
+
+export const fetchChannels = (serverId) => async dispatch => {
+    const res = await csrfFetch(`/api/channels/?serverId=${serverId}`);
+    const data = await res.json()
     dispatch(addChannels(data.channels))
 }
 
@@ -38,7 +43,7 @@ export const createChannel = (channel) => async (dispatch) => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: channel
+        body: JSON.stringify(channel)
     });
     const data = await res.json();
     dispatch(addChannel(data.channel));
@@ -51,7 +56,7 @@ export const updateChannel = (channel) => async (dispatch) => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: channel
+        body: JSON.stringify(channel)
     });
     const data = await res.json();
     dispatch(addChannel(data.channel));
@@ -78,6 +83,8 @@ const channelReducer = (state = {}, action) => {
             return nextState;
         case ADD_CHANNELS:
             return {...nextState, ...action.channels}
+        case RESET_CHANNELS:
+            return {};
         default:
             return state;
     }
