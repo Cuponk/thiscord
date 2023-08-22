@@ -14,13 +14,24 @@ function App() {
 
   return (
     <Switch>
-        <Route exact path='/' component={Splash} />
-        <Route path='/login' component={LoginFormPage}/>
-        <Route path='/signup' component={SignupFormPage}/>
-        <Route exact path='/channels/:serverId'>{<Channel/>}</Route>
-        <Route path='/channels/'>{<Channel/>}</Route>
-        <Route path='*' component={FourOhOFour}/>
-  </Switch>
+      <Route exact path='/' component={Splash} />
+      <Route path='/login'>
+          <LoginFormPage />
+      </Route>
+      <Route path='/signup'>
+          <SignupFormPage />
+      </Route>
+      <Route exact path='/channels/:serverId'>
+          <Channel />
+      </Route>
+      <Route exact path='/channels/:serverId/:channelId'>
+          <Channel />
+      </Route>
+      <Route path='*'>
+          <FourOhOFour />
+      </Route>
+    </Switch>
+
   );
 }
 

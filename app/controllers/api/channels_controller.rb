@@ -1,8 +1,9 @@
 class Api::ChannelsController < ApplicationController
+    before_action :set_server
     
     def index
         if params[:server_id].present?
-            @channels = Channel.where(server_id: params[:server_id])
+            @channels = @server.channels
         else
             @channels = Channel.all
         end
@@ -11,8 +12,13 @@ class Api::ChannelsController < ApplicationController
 
     def show
         @channel = Channel.find_by(id: params[:id])
-        render :show
+        if @channel
+            render :show
+        else
+            render json: { error: "Channel not found" }, status: :not_found
+        end
     end
+    
 
     def create
         @channel = Channel.create(channel_params)
@@ -34,6 +40,10 @@ class Api::ChannelsController < ApplicationController
 
     private
 
+    def set_server
+        @server = Server.find_by(id: params[:server_id])
+    end
+    
     def channel_params
         params.require(:channel).permit(:name, :server_id)
     end

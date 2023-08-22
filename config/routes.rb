@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:create, :show, :index]
     resource :session, only: [:show, :create, :destroy]
-    resources :servers, only: [:index, :show, :create, :update, :destroy]
-    resources :channels, only: [:index, :show, :create, :update, :destroy]
+    resources :servers, only: [:index, :show, :create, :update, :destroy] do
+      resources :channels, only: [:index, :show, :create, :update, :destroy]
+    end
   end
 
   get '*path', to: 'static_pages#frontend', constraints: lambda { |req| !req.xhr? && req.format.html?}

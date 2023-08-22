@@ -1,16 +1,26 @@
 import '../Channel.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import { fetchServer } from '../../../store/server';
+import { useEffect } from 'react';
+import { fetchChannel } from '../../../store/channel';
+import { useParams } from 'react-router-dom';
 
-const ServerHome = ({ serverId }) => {
+
+const ServerHome = () => {
     const dispatch = useDispatch();
+    const { serverId, channelId } = useParams();
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('message sent')
+    }
+
 
     useEffect(() => {
-        dispatch(fetchServer(serverId))
-    }, [dispatch, serverId]);
+        dispatch(fetchChannel(serverId, channelId))
+            .catch(err => console.log(err))
+    }, [dispatch, serverId, channelId]);
 
     const server = useSelector(state => state.servers[serverId])
+    const channel = useSelector(state => state.channels[channelId])
     if (!server) {
         return (
             null
@@ -18,11 +28,13 @@ const ServerHome = ({ serverId }) => {
     }
     return (
 
-        <div>
-            <h1>Server Home</h1>
-            <h1>{server.name}</h1>
-            <img src={server.photoUrl} alt="" />
-        </div>
+        <>
+            <div className="chat-bar">
+                <form onSubmit={handleSubmit}>
+                    <input className='chat-bar-input' type="text" placeholder={`Message #${channel.name}`}></input>
+                </form>
+            </div>
+        </>
     )
 }
 

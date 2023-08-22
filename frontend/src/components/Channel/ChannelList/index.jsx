@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchChannels, resetChannels } from '../../../store/channel';
 import { fetchServer } from '../../../store/server'
 import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import ChannelListItem from './ChannelListItem';
 import { ReactComponent as AddChannel } from '../../../assets/plus-channel.svg'
 
-const ChannelList = ({ serverId }) => {
-    const channels = useSelector(state => Object.values(state.channels))
+const ChannelList = () => {
+    const {serverId, UserId} = useParams();
+    const channels = useSelector(state => Object.values(state.channels));
     const dispatch = useDispatch();
     
     useEffect(() => {
@@ -17,6 +19,8 @@ const ChannelList = ({ serverId }) => {
             dispatch(fetchChannels(serverId));
         }
     }, [dispatch, serverId]);
+
+    
 
     const server = useSelector(state => state.servers[serverId])
 
@@ -32,7 +36,7 @@ const ChannelList = ({ serverId }) => {
                         <button className="channels-list-header-add-button"><AddChannel className="add-channel-icon"/></button>
                     </div>
                     {channels.map((el) => (
-                        <ChannelListItem channel={el} />
+                        <ChannelListItem key={el.id} channel={el}/>
                     ))}
                 </ul>
             </div>

@@ -18,8 +18,8 @@ const Channel = () => {
             <ServerModal showModal={showModal} setShowModal={setShowModal}/>
             <div className='channel-all'>
                 <ServerList setShowModal={setShowModal}/>
-                <ChannelList serverId={serverId}/>
-                <ChannelWindow serverId={serverId} />
+                <ChannelList />
+                <ChannelWindow />
             </div>
         </>
     )
