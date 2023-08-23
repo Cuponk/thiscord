@@ -49,7 +49,7 @@ const ServerModal = ({ showModal, setShowModal }) => {
                         <div className='server-modal-header'>
                             <div className="top-half">
                                 <h2 className='modal-title'>Customize your server</h2>
-                                <CloseButton className='close' onClick={() => setShowModal(false)}/>
+                                <CloseButton className='close-server' onClick={() => setShowModal(false)}/>
                             </div>
                             <p className='modal-text'>Give your new server a personality with a name and an icon, you can always change it later</p>
                         </div>

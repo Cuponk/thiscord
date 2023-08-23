@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 import ChannelListItem from './ChannelListItem';
 import { ReactComponent as AddChannel } from '../../../assets/plus-channel.svg'
 
-const ChannelList = () => {
+const ChannelList = ({setShowModal}) => {
     const {serverId, UserId} = useParams();
     const channels = useSelector(state => Object.values(state.channels));
     const dispatch = useDispatch();
@@ -17,6 +17,9 @@ const ChannelList = () => {
             dispatch(resetChannels());
             dispatch(fetchServer(serverId));
             dispatch(fetchChannels(serverId));
+        }
+        return () => {
+            dispatch(resetChannels());
         }
     }, [dispatch, serverId]);
 
@@ -33,7 +36,7 @@ const ChannelList = () => {
                 <ul>
                     <div className="channels-list-header">
                         <div className="channels-list-header-name">TEXT CHANNELS</div>
-                        <button className="channels-list-header-add-button"><AddChannel className="add-channel-icon"/></button>
+                        <button onClick={() => setShowModal(true)} className="channels-list-header-add-button"><AddChannel className="add-channel-icon"/></button>
                     </div>
                     {channels.map((el) => (
                         <ChannelListItem key={el.id} channel={el}/>

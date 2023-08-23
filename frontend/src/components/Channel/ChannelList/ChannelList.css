@@ -30,6 +30,8 @@
 
 
 .channel-actual-title {
+    background-color: #2b2d31;
+    border: none;
     color: #80848e;
     font-size: 16px;
     font-weight: 500;

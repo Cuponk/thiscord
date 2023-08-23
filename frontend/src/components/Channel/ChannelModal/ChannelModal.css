@@ -1,4 +1,4 @@
-.server-modal {
+.channel-modal {
     position: absolute;
     top: 0;
     left: 0;
@@ -12,40 +12,45 @@
     z-index: 100;
 }
 
-.server-modal-content {
-    width: 440px;
-    height: 404px;
-    background-color: ghostwhite;
-    border-radius: 5px;
+.channel-modal-content {
+    width: 460px;
+    height: 482px;
+    background-color: #313338;
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+
 }
 
-.top-half {
-    margin-top: 30px;
-    font-family: 'gg Sans';
+.channel-modal-header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    width: 440px;
+    height: 70px;
+
+    font-family: 'gg Sans';
+    
 }
 
-.close-server {
-    color: #a5a6aa;
-    position: relative;
+.close {
+    color: #73767d;
     cursor: pointer;
-    bottom: 1rem;
-    left: 4rem;
     transition: 0.2s;
 }
 
-.close-server:hover {
-    color: #3d3e42;
+.close:hover {
+    color: #a5a6aa;
 }
 
 .modal-title {
-    font-size: 24px;
-    font-weight: 700;
+    color: #f2f3f5;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'gg Sans';
+    margin-left: 15px;
 }
 
 .modal-form {
@@ -71,9 +76,9 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background-color: #f2f3f5;
+    background-color: #2b2d31;
     border-radius: 0px 0px 5px 5px ;
-    width: 440px;
+    width: 460px;
     height: 70px;
 }
 
@@ -99,7 +104,7 @@
     background-color: #4752c5;
 }
 
-.server-name-base {
+.channel-name-base {
     height: 100px;
     width: 408px;
     display: flex;
@@ -107,11 +112,11 @@
     gap: 10px
 }
 
-.server-name-input {
+.channel-name-input {
     height: 40%;
     border: none;
-    background-color: #ebebeb;
-    color: #313338;
+    background-color: #1e1f22;
+    color: #545659;
     border-radius: 5px;
     padding-left: 10px;
     font-weight: 500;
@@ -119,18 +124,18 @@
     font-family: 'gg sans';
 }
 
-.server-name-input:focus {
+.channel-name-input:focus {
     outline: none;
 }
 
-.server-name {
+.channel-form-name {
     font-size: 12px;
     font-weight: 700;
-    color: #4e5058;
+    color: #dbdee1;
     font-family: 'gg sans';
 }
 
-.server-name-alert {
+.channel-name-alert {
     color: #62646c;
     font-size: 12px;
     font-weight: 400;

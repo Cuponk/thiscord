@@ -37,8 +37,8 @@ export const fetchChannel = (serverId, channelId) => async (dispatch) => {
     return res;
 }
 
-export const createChannel = (channel) => async (dispatch) => {
-    const res = await csrfFetch('/api/channel/', {
+export const createChannel = (channel, serverId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/servers/${serverId}/channels/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -76,7 +76,9 @@ const channelReducer = (state = {}, action) => {
     const nextState = {...state};
     switch (action.type) {
         case ADD_CHANNEL:
-            nextState[action.channel.id] = action.channel;
+            if (action.channel) {
+                nextState[action.channel.id] = action.channel
+            }
             return nextState;
         case REMOVE_CHANNEL:
             delete nextState[action.channel.id];

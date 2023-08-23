@@ -21,9 +21,14 @@ class Api::ChannelsController < ApplicationController
     
 
     def create
-        @channel = Channel.create(channel_params)
-        render :show
+        @channel = @server.channels.build(channel_params)
+        if @channel.save
+            render :show
+        else
+            render json: @channel.errors.full_messages, status: :unprocessable_entity
+        end
     end
+    
 
     def update
         @channel = Channel.find_by(id: params[:id])
