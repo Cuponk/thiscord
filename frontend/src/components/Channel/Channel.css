@@ -8,29 +8,16 @@
     display: flex;
 }
 
-.server-list {
-    height: 100vh;
-    width: 2.8%;
-    background-color: #1e1f22;
-}
-
-.channel-list {
-    height: 100vh;
-    width: 9%;
-    background-color: #2b2d31;
-}
-
 .channel-window {
     height: 100vh;
-    width: 100%;
     background-color: #313338;
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
 }
 
 .channel-name {
-    height: 4%;
-    width: 99%;
+    height: 48px;
     background-color: #313338;
     color: white;
     display: flex;
@@ -39,3 +26,41 @@
     box-shadow: 0px 2px 1px 0px #25262a; 
 }
 
+.channel-main {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-list {
+    height: 95vh;
+    background-color: #2b2d31;
+    width: 240px;
+}
+
+.chat-bar {
+    margin: 16px;
+    height: 44px;
+    background-color: #383a40;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 1%;
+    border-radius: 8px;
+}
+
+.chat-bar-input {
+    background-color: #383a40;
+    font-family: 'gg sans';
+    border: none;
+    color: white;
+    height: 100%;
+    font-size: 16px;
+    outline: none;
+}
+
+
+.chat-window {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+}

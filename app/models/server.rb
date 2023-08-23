@@ -6,4 +6,7 @@ class Server < ApplicationRecord
         class_name: :User
 
     has_one_attached :photo
+
+    has_many :channels,
+        dependent: :destroy
 end
