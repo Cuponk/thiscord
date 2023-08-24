@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  mount ActionCable.server => '/cable'
+  
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:create, :show, :index]
     resource :session, only: [:show, :create, :destroy]
@@ -11,6 +13,7 @@ Rails.application.routes.draw do
         resources :messages, only: [:index, :show, :create, :update, :destroy]
       end
     end
+
   end
 
   get '*path', to: 'static_pages#frontend', constraints: lambda { |req| !req.xhr? && req.format.html?}

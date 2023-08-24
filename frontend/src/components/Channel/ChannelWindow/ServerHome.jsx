@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { fetchChannel } from '../../../store/channel';
 import { useParams } from 'react-router-dom';
-import { fetchMessages, createMessage, resetMessages } from '../../../store/message';
+import { fetchMessages, createMessage, resetMessages, addMessage } from '../../../store/message';
 import MessageListItem from './MessageListItem';
+import consumer from '../../../consumer.js';
 
 
 const ServerHome = () => {
@@ -38,6 +39,41 @@ const ServerHome = () => {
         dispatch(resetMessages())
         dispatch(fetchMessages(serverId, channelId))
     }, [dispatch, channelId])
+
+    useEffect(() => {
+        const subscription = consumer.subscriptions.create(
+            { 
+                channel: "ChannelsChannel", 
+                id: channelId 
+            },
+            {
+                received: data => {
+                    console.log(data)
+                    dispatch(addMessage(data))
+                }
+            }
+        );
+        return () => subscription?.unsubscribe();
+    }, [dispatch, channelId])
+
+// useEffect(() => {
+  //   consumer.subscriptions.create(
+  //     {
+  //       channel: "MessagesChannel",
+  //       id: currentUserId
+
+  //     },
+  //     {
+  //       received: (data) => {
+  //         console.log('recieved ' + data);
+  //       }
+  //     }
+  //   )
+
+  //   return () => {
+  //     consumer.subscription.unsubscribe();
+  //   }
+  // },[]);
 
     const server = useSelector(state => state.servers[serverId])
     const messages = useSelector(state => Object.values(state.messages))
