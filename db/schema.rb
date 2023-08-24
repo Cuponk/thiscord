@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_20_030457) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_24_203147) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,28 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_030457) do
     t.index ["server_id"], name: "index_channels_on_server_id"
   end
 
+  create_table "memberships", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "membershipable_type", null: false
+    t.bigint "membershipable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["membershipable_id"], name: "index_memberships_on_membershipable_id"
+    t.index ["membershipable_type", "membershipable_id"], name: "index_memberships_on_membershipable"
+    t.index ["membershipable_type"], name: "index_memberships_on_membershipable_type"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "body", null: false
+    t.bigint "author_id", null: false
+    t.bigint "channel_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_messages_on_author_id"
+    t.index ["channel_id"], name: "index_messages_on_channel_id"
+  end
+
   create_table "servers", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "owner_id", null: false
@@ -74,5 +96,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_030457) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "channels", "servers"
+  add_foreign_key "memberships", "users"
+  add_foreign_key "messages", "channels"
+  add_foreign_key "messages", "users", column: "author_id"
   add_foreign_key "servers", "users", column: "owner_id"
 end
