@@ -23,16 +23,28 @@
     display: flex;
     align-items: center;
     padding-left: 1%;
+    gap: 10px;
     box-shadow: 0px 2px 1px 0px #25262a; 
+}
+
+.channel-name-name {
+    font-family: 'gg sans';
+    font-size: 16px;
+    color: #f2f3f5;
+    font-weight: 500;
+}
+
+.channel-hash {
+    color: #80848e;
 }
 
 .channel-main {
     display: flex;
     justify-content: space-between;
+    height: calc(100vh - 48px);
 }
 
 .user-list {
-    height: 95vh;
     background-color: #2b2d31;
     width: 240px;
 }
@@ -41,7 +53,7 @@
     margin: 16px;
     height: 44px;
     background-color: #383a40;
-    width: 100%;
+    width: 97%;
     display: flex;
     align-items: center;
     padding-left: 1%;
@@ -61,6 +73,53 @@
 
 .chat-window {
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
+    justify-content: flex-end;
     width: 100%;
+}
+
+.message-list-item {
+    display: flex;
+    font-family: 'gg sans';
+    font-size: 16px;
+    color: #dbdee1;
+    font-weight: 400;
+    padding-left: 15px;
+    align-items: center;
+    gap: 15px;
+}
+
+.message-list-name {
+    font-family: 'gg sans';
+    font-size: 16px;
+    color: #f2f3f5;
+    font-weight: 500;
+}
+
+.message-list {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    padding: 10px;
+    height: calc(100vh - 92px);
+    gap: 17px;
+}
+
+.message-list-body {
+    color: #dbdee1;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.message-list-pic {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.message-list-username {
+    font-family: 'gg sans';
+    font-size: 16px;
+    color: #f2f3f5;
+    font-weight: 500;
 }

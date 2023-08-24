@@ -40,7 +40,7 @@ const ChannelList = ({setShowModal}) => {
                     </div>
                     {channels.map((el) => (
                         <ChannelListItem key={el.id} channel={el}/>
-                    ))}
+                        ))}
                 </ul>
             </div>
         </div>
