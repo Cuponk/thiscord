@@ -8,12 +8,9 @@ const ChannelListItem = ({ channel }) => {
         history.push(`/channels/${channel.serverId}/${channel.id}`)
     }
     return (
-        <div className="channel-list-base">
-            <Hashtag className='channels-list-header-hashtag'/>
             <li key={channel.id}>
-                <button onClick={handleClick} className="channel-actual-title">{channel.name}</button>
+                <button onClick={handleClick} className="channel-actual-title"> <Hashtag className='channels-list-header-hashtag'/>{channel.name}</button>
             </li>
-        </div>
     )
 }
 

@@ -56,25 +56,6 @@ const ServerHome = () => {
         return () => subscription?.unsubscribe();
     }, [dispatch, channelId])
 
-// useEffect(() => {
-  //   consumer.subscriptions.create(
-  //     {
-  //       channel: "MessagesChannel",
-  //       id: currentUserId
-
-  //     },
-  //     {
-  //       received: (data) => {
-  //         console.log('recieved ' + data);
-  //       }
-  //     }
-  //   )
-
-  //   return () => {
-  //     consumer.subscription.unsubscribe();
-  //   }
-  // },[]);
-
     const server = useSelector(state => state.servers[serverId])
     const messages = useSelector(state => Object.values(state.messages))
 

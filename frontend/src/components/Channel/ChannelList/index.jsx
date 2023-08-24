@@ -38,9 +38,11 @@ const ChannelList = ({setShowModal}) => {
                         <div className="channels-list-header-name">TEXT CHANNELS</div>
                         <button onClick={() => setShowModal(true)} className="channels-list-header-add-button"><AddChannel className="add-channel-icon"/></button>
                     </div>
-                    {channels.map((el) => (
-                        <ChannelListItem key={el.id} channel={el}/>
-                        ))}
+                    <div className="channels-list-base">
+                        {channels.map((el) => (
+                            <ChannelListItem key={el.id} channel={el}/>
+                            ))}
+                    </div>
                 </ul>
             </div>
         </div>

@@ -12,25 +12,6 @@ import consumer from './consumer.js';
 function App() {
   const currentUserId = useSelector(state => state.session.user?.id);
 
-  // useEffect(() => {
-  //   consumer.subscriptions.create(
-  //     {
-  //       channel: "MessagesChannel",
-  //       id: currentUserId
-
-  //     },
-  //     {
-  //       received: (data) => {
-  //         console.log('recieved ' + data);
-  //       }
-  //     }
-  //   )
-
-  //   return () => {
-  //     consumer.subscription.unsubscribe();
-  //   }
-  // },[]);
-
   return (
     <Switch>
       <Route exact path='/' component={Splash} />
