@@ -27,6 +27,6 @@ if (process.env.NODE_ENV === 'production') {
 
 
 const configureStore = (preloadedstate) => {
-    return legacy_createStore(rootReducer, preloadedstate, enhancer);
+    return legacy_createStore(rootReducer, preloadedstate, applyMiddleware(thunk));
 };
 export default configureStore;
