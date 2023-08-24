@@ -70,7 +70,7 @@ const ServerModal = ({ showModal, setShowModal }) => {
                                     />
                                     <p className="server-name-alert">By creating a server, you agree to Thiscord's <span className='guidelines'>Community Guidelines</span></p>
                                 </div>
-                                <div className="bottom-submit">
+                                <div className="bottom-submit-server">
                                     <button className='submit-button' type='submit'>Create</button>
                                 </div>
                             </form>
