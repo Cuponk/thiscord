@@ -1,9 +1,12 @@
 class Api::MessagesController < ApplicationController
 
-    before_action :set_server, :set_channel, only: [:create]
+    before_action :set_channel, only: [:create]
 
     def index
-        @messages = Message.all
+        # @channel = Channel.find(params[:channel_id])
+
+        # @messages = @channel.messages
+        @messages = Message.where(channel_id: params[:channel_id])
         render :index
     end
 
@@ -14,8 +17,6 @@ class Api::MessagesController < ApplicationController
 
     def create
         @message = Message.new(message_params)
-        @message.channel_id = @channel.id
-        @message.author_id = current_user.id
         if @message.save
             render :show
         else
