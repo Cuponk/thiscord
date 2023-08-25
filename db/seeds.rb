@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require 'faker'
+
 ApplicationRecord.transaction do
 
     puts "Destroying tables..."
@@ -39,7 +41,7 @@ ApplicationRecord.transaction do
 
     15.times do
         User.create!(
-            username: Faker::Internet.username,
+            username: Faker::Internet.username(specifier: 3),
             email: Faker::Internet.email,
             password: "password"
         )
@@ -59,7 +61,7 @@ ApplicationRecord.transaction do
     15.times do |i|
         owner_id = rand(1..15)
         Server.create!(
-            name: Faker::Tolkein.location,
+            name: Faker::Fantasy::Tolkien.location,
             owner_id: owner_id
         )
 
@@ -73,7 +75,7 @@ ApplicationRecord.transaction do
     (1..15).to_a.each do |server_id|
         4.times do |i|
             Channel.create!(
-                name: Faker::Tolkein.race,
+                name: Faker::Fantasy::Tolkien.race,
                 server_id: server_id
             )
         end
@@ -81,15 +83,21 @@ ApplicationRecord.transaction do
 
     rand(1..3).times do
         Membership.all.each do |membership|
-            membership = User.find(membership.membershipable_id)
-            channels = Server.find(membership.server_id).channels
-            if (channels.length > 0)
-                rand(1..5).times do
-                    channel = channels.sample
+        user = User.find(membership.user_id)
+        if membership.membershipable_type == 'Server'
+            server = Server.find(membership.membershipable_id)
+            channels = server.channels
+            if channels.length > 0
+            rand(1..5).times do
+                channel = channels.sample
                     Message.create!({
-                        author_id: membership.id,
+                        author_id: user.id,
                         channel_id: channel.id,
-                        body: Faker::Fantasy::Tolkein.poem
+                        body: Faker::Fantasy::Tolkien.poem
                     })
-    end
+                end
+                end
+            end
+        end
+    end      
 end
