@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchChannel } from '../../../store/channel';
 import { ReactComponent as Hashtag } from '../../../assets/hashtag.svg';
-import { fetchMembers } from '../../../store/user';
+import { fetchMembers, resetMembers } from '../../../store/user';
 import ExploreHome from './ExploreHome';
 import Profile from '../../../assets/default.webp';
 
@@ -22,38 +22,47 @@ const ChannelWindow = () => {
     }, [dispatch, serverId, channelId]);
 
     useEffect(() => {
-        if ((channelId && serverId !== '@me') && (channelId && serverId !== '@explore')) {
+        if (channelId && serverId !== '@me' ) {
+            dispatch(resetMembers())
             dispatch(fetchMembers(serverId))
+        }
+        return () => {
+            dispatch(resetMembers())
         }
     }, [serverId, channelId, dispatch]);
 
     const users = useSelector(state => Object.values(state.users))
     const channel = useSelector(state => state.channels[channelId])
-    if (!channel) {
-        return (
-            null
-        )
-    }
 
     const whichHome = () => {
         switch (serverId) {
             case '@me':
-                return <UserHome />
+                return (
+                    <div className='chat-window'>
+                        <UserHome />
+                    </div>
+                )
             case 'explore':
-                return <ExploreHome />
+                return (
+                    <div className='chat-window'>
+                        <ExploreHome />
+                    </div>
+                )
             default:
-                return <ServerHome />
+                return (
+                    <div className='chat-window-chat'>
+                        <ServerHome />
+                    </div>
+                )
         }
     }
     return (
         <div className="channel-window">
             <div className="channel-name">
-                <Hashtag className='channel-hash'/><h1 className='channel-name-name'>{channel.name}</h1>
+                <Hashtag className='channel-hash'/><h1 className='channel-name-name'>{channel ? channel.name : 'Explore'}</h1>
             </div>
                 <div className="channel-main">
-                    <div className='chat-window'>
-                        {whichHome()}
-                    </div>
+                    {whichHome()}
                     <div className='user-list'>
                         {users.map((i) => 
                             <div className='why'>

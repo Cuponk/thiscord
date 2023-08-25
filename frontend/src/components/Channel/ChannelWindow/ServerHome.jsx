@@ -27,11 +27,10 @@ const ServerHome = () => {
         setMessage('')
     }
 
-    
-    useEffect(() => {
-        dispatch(fetchChannel(serverId, channelId))
-        .catch(err => console.log(err))
-    }, [dispatch, serverId, channelId]);
+        useEffect(() => {
+            dispatch(fetchChannel(serverId, channelId))
+            .catch(err => console.log(err))
+        }, [dispatch, serverId, channelId]);
 
     const channel = useSelector(state => state.channels[channelId])
 
@@ -59,6 +58,7 @@ const ServerHome = () => {
     const server = useSelector(state => state.servers[serverId])
     const messages = useSelector(state => Object.values(state.messages))
 
+
     if (!server) {
         return (
             null
@@ -77,7 +77,7 @@ const ServerHome = () => {
                     <input 
                         className='chat-bar-input' 
                         type="text" 
-                        placeholder={`Message #${channel.name}`}
+                        placeholder={channel ?`Message #${channel.name}` : 'Select a channel to chat'}
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                     ></input>

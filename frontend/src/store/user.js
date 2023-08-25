@@ -3,6 +3,7 @@ import csrfFetch from "./csrf";
 const ADD_USER = 'ADD_USER';
 const ADD_USERS = 'ADD_USERS';
 export const ADD_MEMBERS = 'ADD_MEMBERS'
+export const RESET_MEMBERS = 'RESET_MEMBERS'
 
 export const addUsers = (users) => ({
     type: ADD_USERS,
@@ -19,6 +20,11 @@ export const addMembers = (members) => ({
     members
 })
 
+export const resetMembers = () => ({
+    type: RESET_MEMBERS
+})
+
+
 export const fetchMembers = (serverId) => async dispatch => {
     const res = await csrfFetch(`/api/servers/${serverId}`);
     const data = await res.json();
@@ -33,6 +39,8 @@ export const fetchUser = (userId) => async (dispatch) => {
     return res;
 }
 
+
+
 const userReducer = (state = {}, action) => {
     const nextState = {...state};
     switch (action.type) {
@@ -43,6 +51,8 @@ const userReducer = (state = {}, action) => {
                 nextState[action.user.id] = action.user;
             }
             return nextState;
+        case RESET_MEMBERS:
+            return {};
         default:
             return state;
     }

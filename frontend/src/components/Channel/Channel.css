@@ -73,11 +73,17 @@
     outline: none;
 }
 
+.chat-window-chat {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+}
 
 .chat-window {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    height: 100%;
     width: 100%;
 }
 
@@ -151,4 +157,46 @@
     font-size: 95%;
     font-weight: 500;
     color: #9299a2;
+}
+
+.explore-server-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.explore-home {
+    overflow: auto;
+
+}
+
+.explore-server-name {
+    font-family: 'gg sans';
+    font-size: 16px;
+    color: #f2f3f5;
+    font-weight: 500;
+}
+
+.explore-server {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px;
+}
+
+.explore-server-button {
+    margin-right: 20px;
+    position: relative;
+    color: blanchedalmond;
+    height: 36px;
+    width: 98px;
+    background-color: #5865f2;
+    border: none;
+    border-radius: 5px;
+    transition: 0.170s;
+}
+
+.explore-server-button:hover {
+    cursor: pointer;
+    background-color: #4752c5;
 }

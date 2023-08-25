@@ -8,8 +8,6 @@ import ServerModal from './ServerModal';
 import ChannelList from './ChannelList'
 import ChannelModal from './ChannelModal';
 
-
-
 const Channel = () => {
     const [showModal, setShowModal] = useState(false);
     const [showChannelModal, setShowChannelModal] = useState(false);
