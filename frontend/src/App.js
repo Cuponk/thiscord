@@ -8,6 +8,7 @@ import FourOhOFour from './components/404';
 import { Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import consumer from './consumer.js';
+import ExploreHome from './components/Channel/ChannelWindow/ExploreHome';
 
 function App() {
   const currentUserId = useSelector(state => state.session.user?.id);

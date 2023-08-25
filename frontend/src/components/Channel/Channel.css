@@ -46,7 +46,10 @@
 
 .user-list {
     background-color: #2b2d31;
-    width: 240px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 24px;
 }
 
 .chat-bar {
@@ -122,4 +125,30 @@
     font-size: 16px;
     color: #f2f3f5;
     font-weight: 500;
+}
+
+.why-image {
+    width: 32px;
+    height: 32px;
+    margin-left: 8px;
+}
+
+.why {
+    width: 221px;
+    height: 42px;
+    margin-left: 8px;
+    gap: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.why:hover {
+    border-radius: 4px;
+    background-color: #3f4248;
+}
+
+.user-list-name {
+    font-size: 95%;
+    font-weight: 500;
+    color: #9299a2;
 }

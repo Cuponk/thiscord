@@ -1,7 +1,11 @@
 class Api::ServersController < ApplicationController
 
     def index
-        @servers = Server.all
+        if params[:user_id]
+            @servers = Server.joins(:users).where("users.id = #{params[:user_id]}")
+        else
+            @servers = Server.all
+        end
         render :index
     end
 
@@ -12,7 +16,11 @@ class Api::ServersController < ApplicationController
 
     def create
         @server = Server.create(server_params)
-        render :show
+        if @server.save
+            Membership.create(user_id: current_user.id, membershipable_id: @server.id, membershipable_type: "Server")
+            Channel.create(name: "general", server_id: @server.id)
+            render :show
+        end
     end
 
     def update

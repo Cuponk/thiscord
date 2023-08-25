@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { ReactComponent as Hashtag } from '../../../assets/hashtag.svg'
+import { fetchServer } from '../../../store/server';
 
 const ChannelModal = ({showChannelModal, setShowChannelModal}) => {
     const [channelName, setChannelName] = useState('');
@@ -16,7 +17,8 @@ const ChannelModal = ({showChannelModal, setShowChannelModal}) => {
     const {serverId} = useParams()
     const dispatch = useDispatch();
     const channelId = useSelector(state => state.channels[serverId]?.[0]?.id)
-
+    const server = useSelector(state => state.servers[serverId])
+    const currentUserId = useSelector(state => state.session.user.id)
     useEffect(() => {
         dispatch(sessionActions.restoreSession());
     }, [dispatch])
@@ -26,9 +28,13 @@ const ChannelModal = ({showChannelModal, setShowChannelModal}) => {
         const payload = {
             name: channelName
         }
-        dispatch(channelActions.createChannel(payload, serverId));
-        setShowChannelModal(false);
-        history.push(`/channels/${serverId}/${channelId}`)
+            if (server.ownerId === currentUserId) {
+            dispatch(channelActions.createChannel(payload, serverId));
+            setShowChannelModal(false);
+            history.push(`/channels/${serverId}/${channelId}`)
+        } else {
+            alert('Only the server owner can create channels')
+        }
     }
 
     return (

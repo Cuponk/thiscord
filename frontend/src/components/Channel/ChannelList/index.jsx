@@ -13,7 +13,7 @@ const ChannelList = ({setShowModal}) => {
     const dispatch = useDispatch();
     
     useEffect(() => {
-        if (serverId !== '@me') {
+        if (serverId !== '@me' && serverId !== 'explore') {
             dispatch(resetChannels());
             dispatch(fetchServer(serverId));
             dispatch(fetchChannels(serverId));
@@ -25,7 +25,9 @@ const ChannelList = ({setShowModal}) => {
 
     
 
-    const server = useSelector(state => state.servers[serverId])
+    const server = useSelector(state => state.servers)
+    // const members = useSelector(state => Object.values(state.servers.members))
+
 
     return (
         <div className='channel-list'>
@@ -43,6 +45,7 @@ const ChannelList = ({setShowModal}) => {
                             <ChannelListItem key={el.id} channel={el}/>
                             ))}
                     </div>
+                    {/* {console.log(members)} */}
                 </ul>
             </div>
         </div>
