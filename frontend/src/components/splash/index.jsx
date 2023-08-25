@@ -9,14 +9,33 @@ import splashBackground from '../../assets/splash-background.png'
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useState } from 'react';
 
 const Splash = () => {
     const dispatch = useDispatch();
     const history = useHistory();
+    const [errors, setErrors] = useState([]);
 
     const demoLogin = (e) => {
-        e.preventDefault();      
-        dispatch(sessionActions.login({ credential: 'Cuponk', password: 'password' }))
+        e.preventDefault();
+        const payload = {
+            credential: 'Cuponk',
+            password: 'password'
+        }    
+        dispatch(sessionActions.login(payload)).catch(
+            async (res) => {
+                let data;
+                try {
+                    
+                    data = await res.clone().json();
+                } catch {
+                    data = await res.text();
+                }
+                if (data?.errors) setErrors(data.errors);
+                else if (data) setErrors([data]);
+                else setErrors([res.statusText]);
+            }
+            );
         history.push('/channels/@me')
     }
     return (
