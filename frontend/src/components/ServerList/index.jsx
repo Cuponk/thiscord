@@ -10,14 +10,14 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const ServerList = ({ setShowModal }) => {
     const history = useHistory()
-    const servers = useSelector(state => Object.values(state.servers));
     const userId = useSelector(state => state.session.user.id)
     const dispatch = useDispatch();
-
+    
     useEffect(() => {
         dispatch(fetchJoinedServers(userId));
     }, [dispatch, userId]);
-
+    
+    const servers = useSelector(state => Object.values(state.servers));
 
     return (
         <ul className='server-list'>

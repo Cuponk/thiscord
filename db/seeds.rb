@@ -28,7 +28,7 @@ ApplicationRecord.transaction do
     puts "Seeding users..."
     # Users
     User.create!(
-        username: "Derf6",
+        username: "derf6",
         email: "cuponk64@gmail.com",
         password: "password"
     )
@@ -57,6 +57,8 @@ ApplicationRecord.transaction do
         membershipable_type: "Server",
         user_id: 1
     )
+
+    
 
     15.times do |i|
         owner_id = rand(1..15)
