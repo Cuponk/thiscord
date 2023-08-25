@@ -15,5 +15,6 @@ class Server < ApplicationRecord
 
     has_many :users,
         through: :memberships,
-        source: :user
+        source: :user,
+        dependent: :destroy
 end

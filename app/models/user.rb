@@ -23,7 +23,8 @@ class User < ApplicationRecord
   has_many :messages,
     foreign_key: :author_id,
     class_name: :Message,
-    inverse_of: :author
+    inverse_of: :author,
+    dependent: :destroy
 
   def self.find_by_credentials(credential, password)
     field = credential =~ URI::MailTo::EMAIL_REGEXP ? :email : :username

@@ -11,11 +11,11 @@ ApplicationRecord.transaction do
 
     puts "Destroying tables..."
     # Unnecessary if using `rails db:seed:replant`
-    User.destroy_all
-    Server.destroy_all
-    Membership.destroy_all
     Message.destroy_all
+    Membership.destroy_all
     Channel.destroy_all
+    Server.destroy_all
+    User.destroy_all
 
     puts "Resetting primary keys..."
     # For easy testing, so that after seeding, the first `User` has `id` of 1
@@ -58,7 +58,7 @@ ApplicationRecord.transaction do
         user_id: 1
     )
 
-    
+
 
     15.times do |i|
         owner_id = rand(1..15)
