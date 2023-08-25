@@ -12,12 +12,10 @@ const ServerModal = ({ showModal, setShowModal }) => {
     const dispatch = useDispatch();
     const [serverPhoto, setServerPhoto] = useState(null);
     const [imgData, setImgData] = useState(null)
+    
+
     const sessionUser = useSelector(state => state.session.user);
     const [serverName, setServerName] = useState(`${sessionUser.username}'s server`);
-
-    useEffect(() => {
-        dispatch(sessionActions.restoreSession());
-    }, [dispatch])
 
     const handleSubmit = async e => {
         e.preventDefault();
