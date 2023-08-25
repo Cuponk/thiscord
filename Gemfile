@@ -16,6 +16,7 @@ gem "puma", "~> 5.0"
 # gem "jbuilder"
 gem "bcrypt"
 gem "jbuilder"
+gem "faker"
 
 gem "aws-sdk-s3"
 
