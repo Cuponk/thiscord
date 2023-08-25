@@ -15,8 +15,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 17%;
-    height: 33%;
+    width: 480px;
+    height: 408px;
     border-radius: 4px;
     background-color: #313338;
     box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.25); 
@@ -48,6 +48,7 @@
     font-family: 'Gg sans', Arial, Helvetica, sans-serif;
     font-size: 1rem;
     margin-left: 30px;
+    color: white;
 }
 
 .login-header-main {

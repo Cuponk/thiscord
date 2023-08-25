@@ -20,6 +20,11 @@ ApplicationRecord.transaction do
         email: "teset@test.com",
         password: "password"
     )
+    user = User.create!(
+      username: "Cuponk",
+      email: "teset@test2.com",
+      password: "password"
+  )
     users << user
     29.times do  # Create 30 users
       user = User.create!(

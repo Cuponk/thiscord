@@ -21,13 +21,17 @@ const ServerList = ({ setShowModal }) => {
 
     return (
         <ul className='server-list'>
-            <button className='server-item' onClick={() => history.push('/channels/@me')}>
-                <UserProfile className='user-profile-icon'/>
-            </button>
-            <div className="line"></div>
+            <li>
+                <button className='server-item' onClick={() => history.push('/channels/@me')}>
+                    <UserProfile className='user-profile-icon'/>
+                </button>
+            </li>
+            <li>
+                <div className="line"></div>
+            </li>
             {servers.map(server => (<ServerItem key={server.id} server={server} />))}
-            <button onClick={() => setShowModal(true)} className='add-server'><AddButton className='add-server-icon'/></button>
-            <button onClick={() => history.push('/channels/explore')} className='add-server'><Explore className='add-server-icon'/></button>
+            <li><button onClick={() => setShowModal(true)} className='add-server'><AddButton className='add-server-icon'/></button></li>
+            <li><button onClick={() => history.push('/channels/explore')} className='add-server'><Explore className='add-server-icon'/></button></li>
         </ul>
     )
 }

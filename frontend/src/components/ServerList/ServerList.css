@@ -11,6 +11,7 @@
     top: 0;
     gap: 10px;
     padding-top: 10px;
+    overflow: auto;
 }
 
 .server-item-button {
@@ -22,8 +23,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 3rem;
-    height: 3rem;
+    width: 48px;
+    height: 48px;
     background-color: #313338;
     border-radius: 50%;
     border: none;
