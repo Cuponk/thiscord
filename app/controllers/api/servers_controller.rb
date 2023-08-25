@@ -1,7 +1,11 @@
 class Api::ServersController < ApplicationController
 
     def index
-        @servers = Server.all
+        if params[:user_id]
+            @servers = Server.joins(:users).where("users.id = #{params[:user_id]}")
+        else
+            @servers = Server.all
+        end
         render :index
     end
 

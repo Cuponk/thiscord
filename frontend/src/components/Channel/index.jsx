@@ -13,6 +13,7 @@ import ChannelModal from './ChannelModal';
 const Channel = () => {
     const [showModal, setShowModal] = useState(false);
     const [showChannelModal, setShowChannelModal] = useState(false);
+    
     return (
         <>
             <ServerModal showModal={showModal} setShowModal={setShowModal}/>

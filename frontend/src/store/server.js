@@ -19,9 +19,16 @@ export const addServers = (servers) => ({
     servers
 });
 
-
 export const fetchServers = () => async (dispatch) => {
     const res = await csrfFetch('/api/servers/');
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(addServers(data.servers));
+    }
+}
+
+export const fetchJoinedServers = (userId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/servers?userId=${userId}`);
     if (res.ok) {
         const data = await res.json();
         dispatch(addServers(data.servers));
@@ -31,6 +38,7 @@ export const fetchServers = () => async (dispatch) => {
 export const fetchServer = (serverId) => async (dispatch) => {
     const res = await csrfFetch(`/api/servers/${serverId}`);
     const data = await res.json();
+    // console.log(data)
     dispatch(addServer(data.server));
     return res;
 }

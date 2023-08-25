@@ -6,20 +6,28 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchChannel } from '../../../store/channel';
-import { fetchUsers } from '../../../store/user';
 import { ReactComponent as Hashtag } from '../../../assets/hashtag.svg';
+import { fetchMembers } from '../../../store/user';
+import ExploreHome from './ExploreHome';
+import Profile from '../../../assets/default.webp';
 
 const ChannelWindow = () => {
     const dispatch = useDispatch();
     const { serverId, channelId } = useParams();
 
     useEffect(() => {
-        if (channelId && serverId !== '@me') {
+        if ((channelId && serverId !== '@me') && (channelId && serverId !== '@explore')) {
             dispatch(fetchChannel(serverId, channelId))
         }
     }, [dispatch, serverId, channelId]);
 
-    const users = useSelector(state => state.users)
+    useEffect(() => {
+        if ((channelId && serverId !== '@me') && (channelId && serverId !== '@explore')) {
+            dispatch(fetchMembers(serverId))
+        }
+    }, [serverId, channelId, dispatch]);
+
+    const users = useSelector(state => Object.values(state.users))
     const channel = useSelector(state => state.channels[channelId])
     if (!channel) {
         return (
@@ -27,6 +35,16 @@ const ChannelWindow = () => {
         )
     }
 
+    const whichHome = () => {
+        switch (serverId) {
+            case '@me':
+                return <UserHome />
+            case 'explore':
+                return <ExploreHome />
+            default:
+                return <ServerHome />
+        }
+    }
     return (
         <div className="channel-window">
             <div className="channel-name">
@@ -34,10 +52,15 @@ const ChannelWindow = () => {
             </div>
                 <div className="channel-main">
                     <div className='chat-window'>
-                        {serverId === '@me' ? <UserHome /> : <ServerHome/>}
+                        {whichHome()}
                     </div>
                     <div className='user-list'>
-
+                        {users.map((i) => 
+                            <div className='why'>
+                                <img src={Profile} className='why-image' />
+                                <p className='user-list-name'>{i.username}</p>
+                            </div>
+                        )}
                     </div>
                 </div>  
         </div>
