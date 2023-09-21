@@ -63,7 +63,7 @@ export const updateChannel = (channel) => async (dispatch) => {
     return res;
 }
 
-export const deleteChannel = (channel) => async (dispatch) => {
+export const deleteChannel = (serverId, channel) => async (dispatch) => {
     const res = await csrfFetch('/api/channel/', {
         method: 'DELETE',
     });
