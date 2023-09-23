@@ -3,10 +3,8 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useDispatch } from "react-redux";
 import { deleteChannel } from "../../../store/channel";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import { ReactComponent as Settings } from "../../../assets/settings.svg";
-import { useEffect } from "react";
 
-const ChannelListItem = ({ channel, setPanel, panel }) => {
+const ChannelListItem = ({ channel }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { channelId } = useParams();
@@ -22,10 +20,6 @@ const ChannelListItem = ({ channel, setPanel, panel }) => {
         }
     };
 
-    useEffect(() => {
-        // Check if the panel state is updated
-    }, [panel]);
-
     return (
         <li key={channel.id}>
             <button onClick={handleClick} className="channel-actual-title">
@@ -33,14 +27,7 @@ const ChannelListItem = ({ channel, setPanel, panel }) => {
                 <Hashtag className="channels-list-header-hashtag" />
                 {channel.name}
             </button>
-
-            <button
-                onClick={() => {
-                    setPanel([true, `${channel.id}`, "Channel"]);
-                }}
-            >
-                <Settings className="settings-icon" />
-            </button>
+            <button onClick={handleDelete}>Delete</button>
         </li>
     );
 };

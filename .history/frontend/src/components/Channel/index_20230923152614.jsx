@@ -7,12 +7,11 @@ import { useState } from "react";
 import ServerModal from "./ServerModal";
 import ChannelList from "./ChannelList";
 import ChannelModal from "./ChannelModal";
-import SettingsModal from "./SettingsModal";
 
 const Channel = () => {
     const [showModal, setShowModal] = useState(false);
     const [showChannelModal, setShowChannelModal] = useState(false);
-    const [panel, setPanel] = useState([false, "", ""]);
+    const [panel, setPanel] = useState(false);
 
     return (
         <>
@@ -21,14 +20,9 @@ const Channel = () => {
                 showChannelModal={showChannelModal}
                 setShowChannelModal={setShowChannelModal}
             />
-            <SettingsModal panel={panel} setPanel={setPanel} />
             <div className="channel-all">
                 <ServerList setShowModal={setShowModal} />
-                <ChannelList
-                    setShowModal={setShowChannelModal}
-                    setPanel={setPanel}
-                    panel={panel}
-                />
+                <ChannelList setShowModal={setShowChannelModal} />
                 <ChannelWindow />
             </div>
         </>

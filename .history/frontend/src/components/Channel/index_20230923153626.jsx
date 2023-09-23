@@ -12,7 +12,7 @@ import SettingsModal from "./SettingsModal";
 const Channel = () => {
     const [showModal, setShowModal] = useState(false);
     const [showChannelModal, setShowChannelModal] = useState(false);
-    const [panel, setPanel] = useState([false, "", ""]);
+    const [panel, setPanel] = useState([false, ""]);
 
     return (
         <>
@@ -27,7 +27,6 @@ const Channel = () => {
                 <ChannelList
                     setShowModal={setShowChannelModal}
                     setPanel={setPanel}
-                    panel={panel}
                 />
                 <ChannelWindow />
             </div>

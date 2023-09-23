@@ -23,7 +23,7 @@ const ChannelListItem = ({ channel, setPanel, panel }) => {
     };
 
     useEffect(() => {
-        // Check if the panel state is updated
+        console.log("Panel updated:", panel); // Check if the panel state is updated
     }, [panel]);
 
     return (
@@ -36,7 +36,9 @@ const ChannelListItem = ({ channel, setPanel, panel }) => {
 
             <button
                 onClick={() => {
-                    setPanel([true, `${channel.id}`, "Channel"]);
+                    setPanel([true, `${channel.id}`]);
+                    console.log(channel.id);
+                    console.log(panel);
                 }}
             >
                 <Settings className="settings-icon" />

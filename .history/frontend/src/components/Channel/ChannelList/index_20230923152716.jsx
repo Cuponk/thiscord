@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import ChannelListItem from "./ChannelListItem";
 import { ReactComponent as AddChannel } from "../../../assets/plus-channel.svg";
 
-const ChannelList = ({ setShowModal, setPanel, panel }) => {
+const ChannelList = ({ setShowModal, setPanel }) => {
     const { serverId, UserId } = useParams();
     const channels = useSelector((state) => Object.values(state.channels));
     const dispatch = useDispatch();
@@ -51,8 +51,7 @@ const ChannelList = ({ setShowModal, setPanel, panel }) => {
                             <ChannelListItem
                                 key={el.id}
                                 channel={el}
-                                setPanel={setPanel}
-                                panel={panel}
+                                model={setPanel}
                             />
                         ))}
                     </div>

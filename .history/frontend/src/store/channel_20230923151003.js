@@ -52,29 +52,23 @@ export const createChannel = (channel, serverId) => async (dispatch) => {
     return res;
 };
 
-export const updateChannel = (channel, serverId) => async (dispatch) => {
-    const res = await csrfFetch(
-        `/api/servers/${serverId}/channels/${channel.id}`,
-        {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(channel),
-        }
-    );
+export const updateChannel = (channel) => async (dispatch) => {
+    const res = await csrfFetch(`/api/servers/${serverId}/channels/`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(channel),
+    });
     const data = await res.json();
     dispatch(addChannel(data.channel));
     return res;
 };
 
-export const deleteChannel = (serverId, channelId) => async (dispatch) => {
-    const res = await csrfFetch(
-        `/api/servers/${serverId}/channels/${channelId}`,
-        {
-            method: "DELETE",
-        }
-    );
+export const deleteChannel = (serverId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/servers/${serverId}/channels/`, {
+        method: "DELETE",
+    });
     const data = await res.json();
     dispatch(removeChannel(data.channel));
     return res;

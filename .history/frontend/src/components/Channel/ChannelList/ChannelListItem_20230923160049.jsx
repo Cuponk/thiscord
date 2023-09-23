@@ -36,7 +36,7 @@ const ChannelListItem = ({ channel, setPanel, panel }) => {
 
             <button
                 onClick={() => {
-                    setPanel([true, `${channel.id}`, "Channel"]);
+                    setPanel([true, `${channel.id}`]);
                 }}
             >
                 <Settings className="settings-icon" />

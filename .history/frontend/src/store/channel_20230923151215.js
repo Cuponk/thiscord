@@ -54,7 +54,7 @@ export const createChannel = (channel, serverId) => async (dispatch) => {
 
 export const updateChannel = (channel, serverId) => async (dispatch) => {
     const res = await csrfFetch(
-        `/api/servers/${serverId}/channels/${channel.id}`,
+        `/api/servers/${serverId}/channels/${channelId}`,
         {
             method: "PATCH",
             headers: {
