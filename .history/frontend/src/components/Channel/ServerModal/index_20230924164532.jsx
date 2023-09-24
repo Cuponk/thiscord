@@ -13,7 +13,7 @@ const ServerModal = ({ showModal, setShowModal }) => {
     const [serverPhoto, setServerPhoto] = useState(null);
     const [imgData, setImgData] = useState(null);
 
-    const sessionUser = useSelector((state) => state.session?.user);
+    const sessionUser = useSelector((state) => state.session.user);
     const [serverName, setServerName] = useState(
         `${sessionUser?.username}'s server`
     );

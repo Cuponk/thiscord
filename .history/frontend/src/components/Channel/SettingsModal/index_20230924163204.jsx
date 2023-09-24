@@ -25,16 +25,13 @@ const SettingsModal = ({ panel, setPanel }) => {
 
     const handleUpdate = async (e) => {
         e.preventDefault();
-        console.log(panel);
         const payload = {
             name: channelName,
         };
-        console.log(payload);
-        console.log(server.ownerId);
-        console.log(currentUserId);
         if (server.ownerId === currentUserId) {
-            dispatch(channelActions.updateChannel(serverId, payload, panel[1]));
-            setPanel([false, "", ""]);
+            dispatch(channelActions.createChannel(payload, serverId));
+            setPanel([false, ""]);
+            history.push(`/channels/${serverId}/${channelId}`);
         } else {
             alert("Only the server owner can create channels");
         }
@@ -84,9 +81,7 @@ const SettingsModal = ({ panel, setPanel }) => {
                                         className="settings-name-input"
                                         type="text"
                                         placeholder={
-                                            "#" +
-                                            panel[2].toLowerCase() +
-                                            "-name"
+                                            panel[2].toLowerCase() + "-name"
                                         }
                                         value={channelName}
                                         onChange={(e) =>
@@ -97,7 +92,7 @@ const SettingsModal = ({ panel, setPanel }) => {
                                 <div className="bottom-submit">
                                     <button
                                         className="submit-button"
-                                        onClick={handleUpdate}
+                                        type="submit"
                                     >
                                         Save
                                     </button>
@@ -105,7 +100,7 @@ const SettingsModal = ({ panel, setPanel }) => {
                                         onClick={handleDelete}
                                         className="submit-button"
                                     >
-                                        Delete {panel[2]}
+                                        Delete Channel
                                     </button>
                                 </div>
                             </div>

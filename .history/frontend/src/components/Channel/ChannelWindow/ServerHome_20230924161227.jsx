@@ -31,11 +31,11 @@ const ServerHome = () => {
         setMessage("");
     };
 
-    // useEffect(() => {
-    //     dispatch(fetchChannel(serverId, channelId)).catch((err) =>
-    //         console.log(err)
-    //     );
-    // }, [dispatch, serverId, channelId]);
+    useEffect(() => {
+        dispatch(fetchChannel(serverId, channelId)).catch((err) =>
+            console.log(err)
+        );
+    }, [dispatch, serverId, channelId]);
 
     const channel = useSelector((state) => state.channels[channelId]);
 

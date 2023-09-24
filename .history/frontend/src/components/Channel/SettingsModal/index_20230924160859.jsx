@@ -23,34 +23,24 @@ const SettingsModal = ({ panel, setPanel }) => {
         dispatch(sessionActions.restoreSession());
     }, [dispatch]);
 
-    const handleUpdate = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(panel);
         const payload = {
             name: channelName,
         };
-        console.log(payload);
-        console.log(server.ownerId);
-        console.log(currentUserId);
         if (server.ownerId === currentUserId) {
-            dispatch(channelActions.updateChannel(serverId, payload, panel[1]));
-            setPanel([false, "", ""]);
+            dispatch(channelActions.createChannel(payload, serverId));
+            setPanel([false, ""]);
+            history.push(`/channels/${serverId}/${channelId}`);
         } else {
             alert("Only the server owner can create channels");
         }
     };
 
-    const handleDelete = (e) => {
-        e.preventDefault();
-
-        if (server.ownerId === currentUserId) {
-            dispatch(deleteChannel(serverId, panel[1]));
-            if (channelId === panel[1]) {
-                history.push(`/channels/${serverId}`);
-            }
-            setPanel([false, "", ""]);
-        } else {
-            alert("Only the server owner can delete channels");
+    const handleDelete = () => {
+        dispatch(deleteChannel(serverId, channelId));
+        if (channelId === panel[1]) {
+            history.push(`/channels/${serverId}`);
         }
     };
 
@@ -59,7 +49,7 @@ const SettingsModal = ({ panel, setPanel }) => {
             {panel[0] && (
                 <div
                     className="settings-modal"
-                    onClick={() => setPanel([false, "", ""])}
+                    onClick={() => setPanel([false, ""])}
                 >
                     <div
                         className="settings-modal-content"
@@ -71,23 +61,19 @@ const SettingsModal = ({ panel, setPanel }) => {
                             </h2>
                             <CloseButton
                                 className="close"
-                                onClick={() => setPanel([false, "", ""])}
+                                onClick={() => setPanel([false, ""])}
                             />
                         </div>
                         <div className="settings-modal-body">
-                            <div className="modal-form">
+                            <form className="modal-form">
                                 <div className="settings-name-base">
                                     <label className="settings-form-name">
-                                        {panel[2].toUpperCase()} NAME
+                                        CHANNEL NAME
                                     </label>
                                     <input
                                         className="settings-name-input"
                                         type="text"
-                                        placeholder={
-                                            "#" +
-                                            panel[2].toLowerCase() +
-                                            "-name"
-                                        }
+                                        placeholder="#channel-name"
                                         value={channelName}
                                         onChange={(e) =>
                                             setChannelName(e.target.value)
@@ -97,18 +83,18 @@ const SettingsModal = ({ panel, setPanel }) => {
                                 <div className="bottom-submit">
                                     <button
                                         className="submit-button"
-                                        onClick={handleUpdate}
+                                        type="submit"
                                     >
                                         Save
                                     </button>
                                     <button
-                                        onClick={handleDelete}
+                                        onClick={() => handleDelete}
                                         className="submit-button"
                                     >
-                                        Delete {panel[2]}
+                                        Delete
                                     </button>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>

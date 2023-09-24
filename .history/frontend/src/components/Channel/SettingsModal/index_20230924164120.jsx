@@ -25,13 +25,9 @@ const SettingsModal = ({ panel, setPanel }) => {
 
     const handleUpdate = async (e) => {
         e.preventDefault();
-        console.log(panel);
         const payload = {
             name: channelName,
         };
-        console.log(payload);
-        console.log(server.ownerId);
-        console.log(currentUserId);
         if (server.ownerId === currentUserId) {
             dispatch(channelActions.updateChannel(serverId, payload, panel[1]));
             setPanel([false, "", ""]);
