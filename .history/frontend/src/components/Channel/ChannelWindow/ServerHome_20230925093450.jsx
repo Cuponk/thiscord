@@ -44,7 +44,7 @@ const ServerHome = () => {
     useEffect(() => {
         dispatch(resetMessages());
         dispatch(fetchMessages(serverId, channelId));
-    }, [dispatch, channelId, serverId]);
+    }, [dispatch, channelId]);
 
     useEffect(() => {
         const subscription = consumer.subscriptions.create(
