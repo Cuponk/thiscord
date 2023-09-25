@@ -27,7 +27,7 @@ const ChannelListItem = ({ channel, setPanel, panel }) => {
     }, [panel]);
 
     return (
-        <li className="channel-yup-item" key={channel.id}>
+        <li key={channel.id}>
             <button onClick={handleClick} className="channel-actual-title">
                 {" "}
                 <Hashtag className="channels-list-header-hashtag" />

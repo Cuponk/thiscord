@@ -80,7 +80,7 @@ const ServerModal = ({ showModal, setShowModal }) => {
                                     <input
                                         className="upload-icon"
                                         type="file"
-                                        onChange={handleFile}
+                                        onChange={handlefile}
                                     />
                                 </label>
                                 {/* <img className="actual-preview" src={imgData} alt="" /> */}

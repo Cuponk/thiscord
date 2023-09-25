@@ -20,10 +20,6 @@ const ServerModal = ({ showModal, setShowModal }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!sessionUser) {
-            alert("You must be logged in to create a server");
-            return;
-        }
         const formData = new FormData();
         formData.append("server[name]", serverName);
         formData.append("server[owner_id]", sessionUser.id);
@@ -32,7 +28,7 @@ const ServerModal = ({ showModal, setShowModal }) => {
         setShowModal(false);
     };
 
-    const handleFile = (e) => {
+    const handlefile = (e) => {
         const file = e.target.files[0];
         if (file) {
             setServerPhoto(file);
@@ -80,7 +76,7 @@ const ServerModal = ({ showModal, setShowModal }) => {
                                     <input
                                         className="upload-icon"
                                         type="file"
-                                        onChange={handleFile}
+                                        onChange={handlefile}
                                     />
                                 </label>
                                 {/* <img className="actual-preview" src={imgData} alt="" /> */}

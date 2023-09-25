@@ -28,20 +28,7 @@
     color: #80848e;
 }
 
-.channel-settings-button {
-    border: none;
-    background-color: #2b2d31;
-    color: #80848e;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.channel-settings-button:hover {
-    rotate: 90deg;
-    color: #dedfe4;
-}
-
-.channel-actual-title {
+.channel-settings .channel-actual-title {
     width: 221px;
     height: 32px;
     border-radius: 8px;
@@ -103,8 +90,4 @@
     justify-content: space-between;
     margin-top: 20px;
     margin-bottom: 7px;
-}
-
-.channel-yup-item {
-    display: flex;
 }

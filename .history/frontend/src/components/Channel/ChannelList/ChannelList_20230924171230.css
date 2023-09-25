@@ -33,11 +33,9 @@
     background-color: #2b2d31;
     color: #80848e;
     cursor: pointer;
-    transition: 0.2s;
 }
 
 .channel-settings-button:hover {
-    rotate: 90deg;
     color: #dedfe4;
 }
 
@@ -103,8 +101,4 @@
     justify-content: space-between;
     margin-top: 20px;
     margin-bottom: 7px;
-}
-
-.channel-yup-item {
-    display: flex;
 }

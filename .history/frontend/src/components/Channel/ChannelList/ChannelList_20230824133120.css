@@ -18,8 +18,8 @@
     font-size: 16px;
     font-weight: 600;
     color: ghostwhite;
-    font-family: "gg sans";
-    box-shadow: 0px 2px 1px 0.5px #25262a;
+    font-family: 'gg sans';
+    box-shadow: 0px 2px 1px 0.5px #25262a; 
 }
 
 .channels-list-header-hashtag {
@@ -28,18 +28,6 @@
     color: #80848e;
 }
 
-.channel-settings-button {
-    border: none;
-    background-color: #2b2d31;
-    color: #80848e;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.channel-settings-button:hover {
-    rotate: 90deg;
-    color: #dedfe4;
-}
 
 .channel-actual-title {
     width: 221px;
@@ -72,6 +60,7 @@
     gap: 2px;
 }
 
+
 .add-channel-icon {
     width: 100%;
     height: 100%;
@@ -80,7 +69,7 @@
 
 .channels-list-header-name {
     color: #80848e;
-    font-family: "gg sans";
+    font-family: 'gg sans';
     font-weight: 600;
     font-size: 12px;
 }
@@ -94,7 +83,8 @@
     cursor: pointer;
 }
 
-.add-channel-icon:hover {
+
+.add-channel-icon:hover{
     color: #dedfe4;
 }
 
@@ -103,8 +93,4 @@
     justify-content: space-between;
     margin-top: 20px;
     margin-bottom: 7px;
-}
-
-.channel-yup-item {
-    display: flex;
 }

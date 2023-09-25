@@ -32,7 +32,7 @@ const ServerModal = ({ showModal, setShowModal }) => {
         setShowModal(false);
     };
 
-    const handleFile = (e) => {
+    const handlefile = (e) => {
         const file = e.target.files[0];
         if (file) {
             setServerPhoto(file);
@@ -80,7 +80,7 @@ const ServerModal = ({ showModal, setShowModal }) => {
                                     <input
                                         className="upload-icon"
                                         type="file"
-                                        onChange={handleFile}
+                                        onChange={handlefile}
                                     />
                                 </label>
                                 {/* <img className="actual-preview" src={imgData} alt="" /> */}

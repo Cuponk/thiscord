@@ -39,26 +39,25 @@ export const fetchChannel = (serverId, channelId) => async (dispatch) => {
     return res;
 };
 
-export const createChannel = (serverId, channelName) => async (dispatch) => {
-    try {
-        const res = await csrfFetch(`/api/servers/${serverId}/channels`, {
-            method: "POST",
-            body: JSON.stringify({ name: channelName }),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-        if (!res.ok) {
-            throw res;
-        }
-        const channel = await res.json();
-        dispatch(addChannel(channel));
-        return channel;
-    } catch (err) {
-        console.error(err);
-        const error = await err.json();
-        return error;
+export const createChannel = (channel, serverId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/servers/${serverId}/channels/`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(channel),
+    });
+    if (!res.ok) {
+        throw res;
     }
+    const channel = await res.json();
+    dispatch(addChannel(channel));
+    return channel;
+} catch (err) {
+    console.error(err);
+    const error = await err.json();
+    return error;
+}
 };
 
 export const updateChannel =
