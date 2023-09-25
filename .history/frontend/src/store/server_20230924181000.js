@@ -54,16 +54,17 @@ export const createServer = (server) => async (dispatch) => {
     return res;
 };
 
-export const updateServer = (serverId, payload) => async (dispatch) => {
-    const res = await csrfFetch(`/api/servers/${serverId}`, {
-        method: "PATCH",
-        body: JSON.stringify(payload),
+export const updateServer = (server) => async (dispatch) => {
+    const res = await csrfFetch(`/api/servers/${server.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: server,
     });
-    if (res.ok) {
-        return await res.json();
-    } else {
-        throw res;
-    }
+    const data = await res.json();
+    dispatch(addServer(data.server));
+    return res;
 };
 
 export const deleteServer = (serverId) => async (dispatch) => {

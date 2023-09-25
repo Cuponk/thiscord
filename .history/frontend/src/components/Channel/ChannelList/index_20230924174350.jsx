@@ -6,7 +6,6 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ChannelListItem from "./ChannelListItem";
 import { ReactComponent as AddChannel } from "../../../assets/plus-channel.svg";
-import { ReactComponent as Settings } from "../../../assets/settings.svg";
 
 const ChannelList = ({ setShowModal, setPanel, panel }) => {
     const { serverId, UserId } = useParams();
@@ -28,19 +27,15 @@ const ChannelList = ({ setShowModal, setPanel, panel }) => {
     // const members = useSelector(state => Object.values(state.servers.members))
     return (
         <div className="channel-list">
-            {serverId !== "@me" && serverId !== "explore" ? (
-                <div className="server-top-name">
-                    {servers[serverId]?.name}
-                    <button
-                        onClick={() => setPanel([true, serverId, "Server"])}
-                        className="server-top-settings-button"
-                    >
-                        <Settings className="server-top-settings-icon" />
-                    </button>
-                </div>
-            ) : (
-                <div className="server-top-name">Home</div>
-            )}
+            <div className="server-top-name">
+                {serverId !== "@me" && serverId !== "explore" ? (
+                    <div className="server-top-name">
+                        {servers[serverId]?.name}
+                    </div>
+                ) : (
+                    <div className="server-top-name">Home</div>
+                )}
+            </div>
             <div className="channels-actual-list">
                 <ul>
                     {serverId !== "explore" && (

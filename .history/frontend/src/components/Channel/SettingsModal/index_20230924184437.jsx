@@ -24,8 +24,6 @@ const SettingsModal = ({ panel, setPanel }) => {
         dispatch(sessionActions.restoreSession());
     }, [dispatch]);
 
-    useEffect(() => {}, [channelName]);
-
     const handleUpdate = async (e) => {
         console.log(panel);
         const payload = {
@@ -75,7 +73,10 @@ const SettingsModal = ({ panel, setPanel }) => {
                             />
                         </div>
                         <div className="settings-modal-body">
-                            <div className="modal-form">
+                            <form
+                                className="modal-form"
+                                onSubmit={handleUpdate}
+                            >
                                 <div className="settings-name-base">
                                     <label className="settings-form-name">
                                         {panel[2].toUpperCase()} NAME
@@ -97,7 +98,7 @@ const SettingsModal = ({ panel, setPanel }) => {
                                 <div className="bottom-submit">
                                     <button
                                         className="submit-button"
-                                        onClick={handleUpdate}
+                                        type="submit"
                                     >
                                         Update
                                     </button>
@@ -108,7 +109,7 @@ const SettingsModal = ({ panel, setPanel }) => {
                                         Delete {panel[2]}
                                     </button>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>

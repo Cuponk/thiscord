@@ -10,22 +10,34 @@
 }
 
 .server-top-name {
-    width: 100%;
     height: 48px;
     display: flex;
-    justify-content: space-evenly;
     padding-left: 16px;
     align-items: center;
     font-size: 16px;
     font-weight: 600;
     color: ghostwhite;
     font-family: "gg sans";
+    box-shadow: 0px 2px 1px 0.5px #25262a;
 }
 
 .channels-list-header-hashtag {
     width: 20px;
     height: 20px;
     color: #80848e;
+}
+
+.channel-settings-button {
+    border: none;
+    background-color: #2b2d31;
+    color: #80848e;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.channel-settings-button:hover {
+    rotate: 90deg;
+    color: #dedfe4;
 }
 
 .channel-actual-title {
@@ -90,4 +102,21 @@
     justify-content: space-between;
     margin-top: 20px;
     margin-bottom: 7px;
+}
+
+.channel-yup-item {
+    display: flex;
+}
+
+.server-top-settings-button {
+    border: none;
+    background-color: #2b2d31;
+    color: #80848e;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.server-top-settings-buttonn:hover {
+    rotate: 90deg;
+    color: #dedfe4;
 }

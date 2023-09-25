@@ -1,31 +1,31 @@
-import csrfFetch from "./csrf.js";
+import csrfFetch from './csrf.js';
 
-export const ADD_SERVER = "ADD_SERVER";
-export const REMOVE_SERVER = "REMOVE_SERVER";
-export const ADD_SERVERS = "ADD_SERVERS";
+export const ADD_SERVER = 'ADD_SERVER';
+export const REMOVE_SERVER = 'REMOVE_SERVER';
+export const ADD_SERVERS = 'ADD_SERVERS';
 
 export const addServer = (server) => ({
     type: ADD_SERVER,
-    server,
+    server
 });
 
 export const removeServer = (server) => ({
     type: REMOVE_SERVER,
-    server,
+    server
 });
 
 export const addServers = (servers) => ({
     type: ADD_SERVERS,
-    servers,
+    servers
 });
 
 export const fetchServers = () => async (dispatch) => {
-    const res = await csrfFetch("/api/servers/");
+    const res = await csrfFetch('/api/servers/');
     if (res.ok) {
         const data = await res.json();
         dispatch(addServers(data.servers));
     }
-};
+}
 
 export const fetchJoinedServers = (userId) => async (dispatch) => {
     const res = await csrfFetch(`/api/servers?userId=${userId}`);
@@ -33,7 +33,7 @@ export const fetchJoinedServers = (userId) => async (dispatch) => {
         const data = await res.json();
         dispatch(addServers(data.servers));
     }
-};
+}
 
 export const fetchServer = (serverId) => async (dispatch) => {
     const res = await csrfFetch(`/api/servers/${serverId}`);
@@ -41,42 +41,45 @@ export const fetchServer = (serverId) => async (dispatch) => {
     // console.log(data)
     dispatch(addServer(data.server));
     return res;
-};
+}
 
 export const createServer = (server) => async (dispatch) => {
-    const res = await csrfFetch("/api/servers/", {
-        method: "POST",
-        headers: {},
-        body: server,
+    const res = await csrfFetch('/api/servers/', {
+        method: 'POST',
+        headers: {
+        },
+        body: server
     });
     const data = await res.json();
     dispatch(addServer(data.server));
     return res;
-};
+}
 
-export const updateServer = (serverId, payload) => async (dispatch) => {
-    const res = await csrfFetch(`/api/servers/${serverId}`, {
-        method: "PATCH",
-        body: JSON.stringify(payload),
+export const updateServer = (server) => async (dispatch) => {
+    const res = await csrfFetch(`/api/servers/${server.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: server
     });
-    if (res.ok) {
-        return await res.json();
-    } else {
-        throw res;
-    }
-};
+    const data = await res.json();
+    dispatch(addServer(data.server));
+    return res;
+}
 
 export const deleteServer = (serverId) => async (dispatch) => {
     const res = await csrfFetch(`/api/servers/${serverId}`, {
-        method: "DELETE",
+        method: 'DELETE'
     });
     const data = await res.json();
     dispatch(removeServer(data.server));
     return res;
-};
+}
+
 
 const serverReducer = (state = {}, action) => {
-    const nextState = { ...state };
+    const nextState = {...state};
     switch (action.type) {
         case ADD_SERVER:
             nextState[action.server.id] = action.server;
@@ -85,10 +88,10 @@ const serverReducer = (state = {}, action) => {
             delete nextState[action.server.id];
             return nextState;
         case ADD_SERVERS:
-            return { ...nextState, ...action.servers };
+            return {...nextState, ...action.servers}
         default:
             return state;
     }
-};
+}
 
 export default serverReducer;

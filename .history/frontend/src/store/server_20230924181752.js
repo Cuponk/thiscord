@@ -59,11 +59,9 @@ export const updateServer = (serverId, payload) => async (dispatch) => {
         method: "PATCH",
         body: JSON.stringify(payload),
     });
-    if (res.ok) {
-        return await res.json();
-    } else {
-        throw res;
-    }
+    const data = await res.json();
+    dispatch(addServer(data.server));
+    return res;
 };
 
 export const deleteServer = (serverId) => async (dispatch) => {

@@ -24,8 +24,6 @@ const SettingsModal = ({ panel, setPanel }) => {
         dispatch(sessionActions.restoreSession());
     }, [dispatch]);
 
-    useEffect(() => {}, [channelName]);
-
     const handleUpdate = async (e) => {
         console.log(panel);
         const payload = {

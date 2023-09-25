@@ -15,6 +15,10 @@ const ChannelListItem = ({ channel, setPanel, panel }) => {
         history.push(`/channels/${channel.serverId}/${channel.id}`);
     };
 
+    useEffect(() => {
+        // Check if the panel state is updated
+    }, [panel]);
+
     return (
         <li className="channel-yup-item" key={channel.id}>
             <button onClick={handleClick} className="channel-actual-title">

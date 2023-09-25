@@ -19,18 +19,15 @@ const SettingsModal = ({ panel, setPanel }) => {
     const channelId = useSelector((state) => state.channels[serverId]?.[0]?.id);
     const server = useSelector((state) => state.servers[serverId]);
     const currentUserId = useSelector((state) => state.session.user.id);
-
     useEffect(() => {
         dispatch(sessionActions.restoreSession());
     }, [dispatch]);
 
-    useEffect(() => {}, [channelName]);
-
     const handleUpdate = async (e) => {
+        e.preventDefault();
         console.log(panel);
         const payload = {
             name: channelName,
-            serverId: serverId,
         };
         if (server.ownerId === currentUserId) {
             dispatch(channelActions.updateChannel(serverId, payload, panel[1]));
@@ -99,7 +96,7 @@ const SettingsModal = ({ panel, setPanel }) => {
                                         className="submit-button"
                                         onClick={handleUpdate}
                                     >
-                                        Update
+                                        Save
                                     </button>
                                     <button
                                         onClick={handleDelete}

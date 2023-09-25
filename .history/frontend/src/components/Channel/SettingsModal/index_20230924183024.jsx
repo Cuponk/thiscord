@@ -19,14 +19,12 @@ const SettingsModal = ({ panel, setPanel }) => {
     const channelId = useSelector((state) => state.channels[serverId]?.[0]?.id);
     const server = useSelector((state) => state.servers[serverId]);
     const currentUserId = useSelector((state) => state.session.user.id);
-
     useEffect(() => {
         dispatch(sessionActions.restoreSession());
     }, [dispatch]);
 
-    useEffect(() => {}, [channelName]);
-
     const handleUpdate = async (e) => {
+        e.stopPropagation();
         console.log(panel);
         const payload = {
             name: channelName,
@@ -75,7 +73,10 @@ const SettingsModal = ({ panel, setPanel }) => {
                             />
                         </div>
                         <div className="settings-modal-body">
-                            <div className="modal-form">
+                            <form
+                                className="modal-form"
+                                onSubmit={handleUpdate}
+                            >
                                 <div className="settings-name-base">
                                     <label className="settings-form-name">
                                         {panel[2].toUpperCase()} NAME
@@ -99,7 +100,7 @@ const SettingsModal = ({ panel, setPanel }) => {
                                         className="submit-button"
                                         onClick={handleUpdate}
                                     >
-                                        Update
+                                        Save
                                     </button>
                                     <button
                                         onClick={handleDelete}
@@ -108,7 +109,7 @@ const SettingsModal = ({ panel, setPanel }) => {
                                         Delete {panel[2]}
                                     </button>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
