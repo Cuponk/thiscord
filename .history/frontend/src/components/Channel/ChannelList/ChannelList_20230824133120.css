@@ -1,0 +1,93 @@
+.channel-list {
+    height: 100vh;
+    width: 240px;
+    background-color: #2b2d31;
+}
+
+.channels-actual-list {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.server-top-name {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    justify-content: space-evenly;
+    padding-left: 16px;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: ghostwhite;
+    font-family: "gg sans";
+}
+
+.channels-list-header-hashtag {
+    width: 20px;
+    height: 20px;
+    color: #80848e;
+}
+
+.channel-actual-title {
+    width: 221px;
+    height: 32px;
+    border-radius: 8px;
+    background-color: #2b2d31;
+    border: none;
+    color: #80848e;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.channel-actual-title:hover {
+    background-color: #3f4248;
+    color: #dedfe4;
+}
+
+.channel-actual-title:focus {
+    background-color: #3f4248;
+    color: ghostwhite;
+}
+
+.channels-list-base {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.add-channel-icon {
+    width: 100%;
+    height: 100%;
+    color: #949ba4;
+}
+
+.channels-list-header-name {
+    color: #80848e;
+    font-family: "gg sans";
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.channels-list-header-add-button {
+    background-color: #2b2d31;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.add-channel-icon:hover {
+    color: #dedfe4;
+}
+
+.channels-list-header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 7px;
+}
