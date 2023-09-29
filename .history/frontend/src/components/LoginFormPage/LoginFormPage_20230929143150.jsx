@@ -142,13 +142,13 @@ function LoginFormPage() {
                         <div className="demo-logins">
                             <button
                                 onClick={demoLogin1}
-                                className="demo-button-login"
+                                className="demo-button"
                             >
                                 Demo 1 Login
                             </button>
                             <button
                                 onClick={demoLogin2}
-                                className="demo-button-login"
+                                className="demo-button"
                             >
                                 Demo 2 Login
                             </button>

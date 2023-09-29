@@ -27,6 +27,7 @@
     display: flex;
     justify-content: space-evenly;
     gap: 10%;
+    margin-top: 5vh;
 }
 
 .splash-main {

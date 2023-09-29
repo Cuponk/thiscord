@@ -83,13 +83,10 @@
     color: white;
     margin-left: 30px;
     font-size: 15px;
-    cursor: pointer;
 }
 
 .demo-logins {
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
     gap: 1rem;
 }
 
@@ -101,7 +98,6 @@
     background-color: #5865f2;
     color: white;
     font-size: 15px;
-    cursor: pointer;
 }
 
 .register-link {

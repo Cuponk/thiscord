@@ -108,7 +108,7 @@ const Splash = () => {
                         that makes it easy to talk every day and hang out more
                         often.
                     </h1>
-                    <div className="demo-buttons-list">
+                    <div>
                         <button onClick={demoLogin1} className="demo-button">
                             Demo 1 Login
                         </button>

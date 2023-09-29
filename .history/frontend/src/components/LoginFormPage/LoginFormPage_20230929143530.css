@@ -83,7 +83,6 @@
     color: white;
     margin-left: 30px;
     font-size: 15px;
-    cursor: pointer;
 }
 
 .demo-logins {
@@ -101,7 +100,6 @@
     background-color: #5865f2;
     color: white;
     font-size: 15px;
-    cursor: pointer;
 }
 
 .register-link {

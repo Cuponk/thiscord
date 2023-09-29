@@ -41,62 +41,6 @@ function LoginFormPage() {
         }
     };
 
-    const demoLogin1 = async (e) => {
-        e.preventDefault();
-        setErrors([]);
-        const payload = {
-            credential: "Cuponk",
-            password: "password",
-        };
-        try {
-            await dispatch(sessionActions.login(payload));
-            history.push("/channels/@me");
-        } catch (res) {
-            let data;
-            try {
-                // .clone() essentially allows you to read the response body twice
-                data = await res.clone().json();
-            } catch {
-                data = await res.text(); // Will hit this case if the server is down
-            }
-            if (data?.errors) {
-                setErrors(data.errors);
-            } else if (data) {
-                setErrors([data]);
-            } else {
-                setErrors([res.statusText]);
-            }
-        }
-    };
-
-    const demoLogin2 = async (e) => {
-        e.preventDefault();
-        setErrors([]);
-        const payload = {
-            credential: "DemoUser",
-            password: "password",
-        };
-        try {
-            await dispatch(sessionActions.login(payload));
-            history.push("/channels/@me");
-        } catch (res) {
-            let data;
-            try {
-                // .clone() essentially allows you to read the response body twice
-                data = await res.clone().json();
-            } catch {
-                data = await res.text(); // Will hit this case if the server is down
-            }
-            if (data?.errors) {
-                setErrors(data.errors);
-            } else if (data) {
-                setErrors([data]);
-            } else {
-                setErrors([res.statusText]);
-            }
-        }
-    };
-
     return (
         <>
             <div className="login-all">
@@ -139,20 +83,7 @@ function LoginFormPage() {
                         <button className="login-button" type="submit">
                             Log In
                         </button>
-                        <div className="demo-logins">
-                            <button
-                                onClick={demoLogin1}
-                                className="demo-button-login"
-                            >
-                                Demo 1 Login
-                            </button>
-                            <button
-                                onClick={demoLogin2}
-                                className="demo-button-login"
-                            >
-                                Demo 2 Login
-                            </button>
-                        </div>
+                        <div className="demo-logins"></div>
                     </form>
                     <div className="register">
                         <p className="register-text">

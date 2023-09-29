@@ -139,20 +139,7 @@ function LoginFormPage() {
                         <button className="login-button" type="submit">
                             Log In
                         </button>
-                        <div className="demo-logins">
-                            <button
-                                onClick={demoLogin1}
-                                className="demo-button-login"
-                            >
-                                Demo 1 Login
-                            </button>
-                            <button
-                                onClick={demoLogin2}
-                                className="demo-button-login"
-                            >
-                                Demo 2 Login
-                            </button>
-                        </div>
+                        <div className="demo-logins"></div>
                     </form>
                     <div className="register">
                         <p className="register-text">

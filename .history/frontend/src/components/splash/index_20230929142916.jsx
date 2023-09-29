@@ -108,14 +108,12 @@ const Splash = () => {
                         that makes it easy to talk every day and hang out more
                         often.
                     </h1>
-                    <div className="demo-buttons-list">
-                        <button onClick={demoLogin1} className="demo-button">
-                            Demo 1 Login
-                        </button>
-                        <button onClick={demoLogin2} className="demo-button">
-                            Demo 2 Login
-                        </button>
-                    </div>
+                    <button onClick={demoLogin1} className="demo-button">
+                        Demo 1 Login
+                    </button>
+                    <button onClick={demoLogin2} className="demo-button">
+                        Demo 2 Login
+                    </button>
                 </div>
                 <img src={splashRight} alt="" className="splash-right" />
             </div>
