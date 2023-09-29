@@ -10,7 +10,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const ServerList = ({ setShowModal }) => {
     const history = useHistory();
-    const userId = useSelector((state) =>
+    const currentUserId = useSelector((state) =>
         state.session.user ? state.session.user.id : null
     );
     const dispatch = useDispatch();
