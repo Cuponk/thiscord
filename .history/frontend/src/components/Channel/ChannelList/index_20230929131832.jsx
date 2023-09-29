@@ -17,16 +17,16 @@ const ChannelList = ({ setShowModal, setPanel, panel }) => {
     const [serverDataFetched, setServerDataFetched] = useState(false);
 
     useEffect(() => {
-        if (serverId !== "@me" && serverId !== "explore") {
+        if (
+            serverId !== "@me" &&
+            serverId !== "explore" &&
+            !serverDataFetched
+        ) {
             dispatch(resetChannels());
             dispatch(fetchServer(serverId));
             dispatch(fetchChannels(serverId));
             setServerDataFetched(true);
         }
-
-        return () => {
-            dispatch(resetChannels());
-        };
     }, [serverId, serverDataFetched, dispatch]);
 
     const servers = useSelector((state) => state.servers);

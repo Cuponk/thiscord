@@ -31,9 +31,7 @@ class Api::ServersController < ApplicationController
     end
 
     def destroy
-        @server = Server.find_by(id: params[:id])
-        @server.destroy
-        render :show
+        
     end
 
     private

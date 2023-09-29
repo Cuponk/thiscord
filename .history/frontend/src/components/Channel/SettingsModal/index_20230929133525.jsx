@@ -36,7 +36,7 @@ const SettingsModal = ({ panel, setPanel }) => {
             serverId: serverId,
         };
         if (server.ownerId === currentUserId) {
-            dispatch(channelActions.updateChannel(serverId, payload, panel[1]));
+            dispatch(serverActions.updateChannel(serverId, payload, panel[1]));
             setPanel([false, "", ""]);
         } else {
             alert("Only the server owner can create channels");
@@ -48,14 +48,14 @@ const SettingsModal = ({ panel, setPanel }) => {
             name: channelName,
         };
         if (server.ownerId === currentUserId) {
-            dispatch(serverActions.updateServer(serverId, payload));
+            dispatch(channelActions.updateServer(serverId, payload));
             setPanel([false, "", ""]);
         } else {
             alert("Only the server owner can create channels");
         }
     };
 
-    const handleDeleteChannel = (e) => {
+    const handleDelete = (e) => {
         e.preventDefault();
 
         if (server.ownerId === currentUserId) {
@@ -66,18 +66,6 @@ const SettingsModal = ({ panel, setPanel }) => {
             setPanel([false, "", ""]);
         } else {
             alert("Only the server owner can delete channels");
-        }
-    };
-
-    const handleDeleteServer = (e) => {
-        e.preventDefault();
-
-        if (server.ownerId === currentUserId) {
-            dispatch(serverActions.deleteServer(serverId));
-            history.push(`/channels/@me`);
-            setPanel([false, "", ""]);
-        } else {
-            alert("Only the server owner can delete servers");
         }
     };
 
@@ -133,11 +121,7 @@ const SettingsModal = ({ panel, setPanel }) => {
                                         Update
                                     </button>
                                     <button
-                                        onClick={
-                                            panel[2] === "Channel"
-                                                ? handleDeleteChannel
-                                                : handleDeleteServer
-                                        }
+                                        onClick={handleDelete}
                                         className="submit-button"
                                     >
                                         Delete {panel[2]}
