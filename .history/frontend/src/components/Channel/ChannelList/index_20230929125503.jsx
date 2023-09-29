@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import ChannelListItem from "./ChannelListItem";
 import { ReactComponent as AddChannel } from "../../../assets/plus-channel.svg";
 import { ReactComponent as Settings } from "../../../assets/settings.svg";
-import { useRef } from "react";
+import { useState } from "react";
 
 const ChannelList = ({ setShowModal, setPanel, panel }) => {
     const { serverId, UserId } = useParams();

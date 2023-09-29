@@ -22,7 +22,7 @@ const ChannelModal = ({ showChannelModal, setShowChannelModal }) => {
         state.session.user ? state.session.user.id : null
     );
     useEffect(() => {
-        dispatch(sessionActions.restoreSession());
+        // dispatch(sessionActions.restoreSession());
     }, [dispatch]);
 
     const handleSubmit = (e) => {
