@@ -19,26 +19,21 @@ function LoginFormPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-
-        try {
-            await dispatch(sessionActions.login({ credential, password }));
-            history.push("/channels/@me");
-        } catch (res) {
-            let data;
-            try {
-                // .clone() essentially allows you to read the response body twice
-                data = await res.clone().json();
-            } catch {
-                data = await res.text(); // Will hit this case if the server is down
+        dispatch(sessionActions.login({ credential, password })).catch(
+            async (res) => {
+                let data;
+                try {
+                    // .clone() essentially allows you to read the response body twice
+                    data = await res.clone().json();
+                } catch {
+                    data = await res.text(); // Will hit this case if the server is down
+                }
+                if (data?.errors) setErrors(data.errors);
+                else if (data) setErrors([data]);
+                else setErrors([res.statusText]);
             }
-            if (data?.errors) {
-                setErrors(data.errors);
-            } else if (data) {
-                setErrors([data]);
-            } else {
-                setErrors([res.statusText]);
-            }
-        }
+        );
+        history.push("/channels/@me");
     };
 
     return (
