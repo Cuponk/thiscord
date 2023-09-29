@@ -26,10 +26,9 @@ export const resetChannels = () => ({
 
 export const fetchChannels = (serverId) => async (dispatch) => {
     const res = await csrfFetch(`/api/servers/${serverId}/channels`);
-    if (res.ok) {
-        const data = await res.json();
-        dispatch(addChannels(data.channels));
-    }
+
+    const data = await res.json();
+    dispatch(addChannels(data.channels));
 };
 
 export const fetchChannel = (serverId, channelId) => async (dispatch) => {

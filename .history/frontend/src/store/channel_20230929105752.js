@@ -26,10 +26,8 @@ export const resetChannels = () => ({
 
 export const fetchChannels = (serverId) => async (dispatch) => {
     const res = await csrfFetch(`/api/servers/${serverId}/channels`);
-    if (res.ok) {
-        const data = await res.json();
-        dispatch(addChannels(data.channels));
-    }
+    const data = await res.json();
+    dispatch(addChannels(data.channels));
 };
 
 export const fetchChannel = (serverId, channelId) => async (dispatch) => {
@@ -41,26 +39,25 @@ export const fetchChannel = (serverId, channelId) => async (dispatch) => {
     return res;
 };
 
-export const createChannel = (serverId, payload) => async (dispatch) => {
+export const createChannel = (serverId, channelName) => async (dispatch) => {
     try {
         const res = await csrfFetch(`/api/servers/${serverId}/channels`, {
             method: "POST",
-            body: JSON.stringify(payload),
+            body: JSON.stringify({ name: channelName, serverId: serverId }),
             headers: {
                 "Content-Type": "application/json",
             },
         });
         if (!res.ok) {
-            throw new Error(
-                `Error creating channel: ${res.status} ${res.statusText}`
-            );
+            throw res;
         }
         const channel = await res.json();
         dispatch(addChannel(channel));
         return channel;
     } catch (err) {
         console.error(err);
-        return null;
+        const error = await err.json();
+        return error;
     }
 };
 

@@ -25,7 +25,7 @@ const ChannelModal = ({ showChannelModal, setShowChannelModal }) => {
         dispatch(sessionActions.restoreSession());
     }, [dispatch]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const payload = {
             name: channelName,

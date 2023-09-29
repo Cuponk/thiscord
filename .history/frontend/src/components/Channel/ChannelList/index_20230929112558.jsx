@@ -7,26 +7,22 @@ import { useParams } from "react-router-dom";
 import ChannelListItem from "./ChannelListItem";
 import { ReactComponent as AddChannel } from "../../../assets/plus-channel.svg";
 import { ReactComponent as Settings } from "../../../assets/settings.svg";
-import { useState } from "react";
 
 const ChannelList = ({ setShowModal, setPanel, panel }) => {
     const { serverId, UserId } = useParams();
     const channels = useSelector((state) => Object.values(state.channels));
     const dispatch = useDispatch();
-    const [fetched, setFetched] = useState(false);
 
     useEffect(() => {
         if (serverId !== "@me" && serverId !== "explore") {
             dispatch(resetChannels());
             dispatch(fetchServer(serverId));
             dispatch(fetchChannels(serverId));
-            setFetched(true);
         }
-
         return () => {
             dispatch(resetChannels());
         };
-    }, [dispatch, serverId, fetched]);
+    }, [dispatch, serverId, channels]);
 
     const servers = useSelector((state) => state.servers);
     // const members = useSelector(state => Object.values(state.servers.members))

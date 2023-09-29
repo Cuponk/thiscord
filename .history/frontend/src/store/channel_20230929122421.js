@@ -57,7 +57,7 @@ export const createChannel = (serverId, payload) => async (dispatch) => {
         }
         const channel = await res.json();
         dispatch(addChannel(channel));
-        return channel;
+        return res;
     } catch (err) {
         console.error(err);
         return null;

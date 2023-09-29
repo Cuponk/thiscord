@@ -25,20 +25,22 @@ const ChannelModal = ({ showChannelModal, setShowChannelModal }) => {
         dispatch(sessionActions.restoreSession());
     }, [dispatch]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const payload = {
             name: channelName,
             serverId: serverId,
         };
+        console.log("Payload:", payload);
+        console.log("Server:", server);
+        console.log("Current user ID:", currentUserId);
         if (server.ownerId === currentUserId) {
-            const newChannel = dispatch(
+            const newChannel = await dispatch(
                 channelActions.createChannel(serverId, payload)
             );
-            if (newChannel) {
-                history.push(`/channels/${serverId}/${newChannel.id}`);
-                setShowChannelModal(false);
-            }
+            console.log("New channel:", newChannel);
+            history.push(`/channels/${serverId}/${newChannel.id}`);
+            setShowChannelModal(false);
         } else {
             alert("Only the server owner can create channels");
         }
