@@ -23,6 +23,66 @@ Users can also explore all available servers and join then
 
 ---
 
+## Code Snippets
+
+#### Account Creation
+
+```js
+   const handleSubmit = (e) => {
+       e.preventDefault();
+       if (password === confirmPassword) {
+           setErrors([]);
+           return dispatch(
+               sessionActions.signup({ email, username, password })
+           ).catch(async (res) => {
+               let data;
+               try {
+                   // .clone() essentially allows you to read the response body twice
+                   data = await res.clone().json();
+               } catch {
+                   data = await res.text(); // Will hit this case if the server is down
+               }
+               if (data?.errors) setErrors(data.errors);
+               else if (data) setErrors([data]);
+               else setErrors([res.statusText]);
+           });
+       }
+       return setErrors([
+           "Confirm Password field must be the same as the Password field",
+       ]);
+   };
+```
+
+#### Server Creation
+
+```js
+ const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (!sessionUser) {
+            alert("You must be logged in to create a server");
+            return;
+        }
+        const formData = new FormData();
+        formData.append("server[name]", serverName);
+        formData.append("server[owner_id]", sessionUser.id);
+        if (serverPhoto) formData.append("server[photo]", serverPhoto);
+        dispatch(serverActions.createServer(formData));
+        setShowModal(false);
+    };
+
+    const handleFile = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setServerPhoto(file);
+            const reader = new FileReader();
+            reader.addEventListener("load", () => {
+                setImgData(reader.result);
+            });
+            reader.readAsDataURL(file);
+        }
+    };
+```
+
 ## Screenshots
 
 #### Splash page
@@ -32,5 +92,6 @@ Users can also explore all available servers and join then
 
 #### Main page
 
-![CleanShot 2023-09-29 at 14 41 30@2x](https://github.com/Cuponk/thiscord/assets/76704172/20845f7d-9233-4622-9538-5d5be74eaca8)
+![image](https://github.com/Cuponk/thiscord/assets/76704172/6cb4b2ab-32e2-45d3-b983-68baab7220fa)
+
 
